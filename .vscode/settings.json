@@ -1,0 +1,14 @@
+{
+  "editor.fontFamily": "Operator Mono",
+  "editor.fontVariations": false,
+  "workbench.colorCustomizations": {
+    "[Dracula At Night]": {
+      "editor.background": "#19181d73",
+      "activityBar.background": "#19181d11",
+      "sideBar.background": "#19181d3f"
+    }
+  },
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.codeActionsOnSave": {},
+  "editor.semanticTokenColorCustomizations": {}
+}
