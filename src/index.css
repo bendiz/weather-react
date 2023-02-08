@@ -1,13 +1,237 @@
+/* BACKGROUND */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background: url("/public/img/background/sky.png") no-repeat center/cover;
+  background-size: 120%; /* Spread out clouds */
+  -webkit-animation: backgroundRoll 50s ease-out infinite;
+  animation: backgroundRoll 50s ease-out infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body,
+#search::placeholder,
+#geo-button,
+#celsius-fahrenheit {
+  color: #fff;
+  text-decoration: none; /* Remove underline celsius/fh */
+}
+
+/* Background animation */
+@keyframes backgroundRoll {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* WEATHER CARD */
+
+/* Search field */
+form {
+  display: flex; /* Get input field and geobutton on the same line */
+  font-size: 2rem;
+}
+
+#search {
+  width: 90%;
+  border: 0;
+  border-radius: 0.4rem;
+  text-align: center;
+  margin: 2vw 0 0 5%;
+  background-color: rgba(82, 174, 196, 0.54);
+}
+
+#geo-button {
+  padding: 2.5vw 2vw 0 1vw;
+  border: 0;
+  background-color: transparent;
+  opacity: 40%;
+}
+#geo-button:hover {
+  color: var(--alt-color);
+}
+
+.weather-card ::placeholder {
+  opacity: 50%;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.5rem;
+}
+
+/* Weather card body */
+.container {
+  width: 55%;
+  background: hsla(192, 40%, 42%, 0.5);
+  border-radius: 0.4rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  /* Vertically and horizontally center the weather card */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* Current weather section */
+.current-weather-section {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Temperature section */
+.temperature-container {
+  /* Get temperature number and C/F button on the same line */
+  display: flex;
+}
+
+#temperature {
+  font-family: "Coda";
+  font-size: 6rem;
+  font-weight: 400;
+}
+
+#celsius-fahrenheit:hover {
+  color: var(--alt-color);
+}
+
+/* City name, date and weather details */
+#current-city {
+  font-family: "Coda";
+  font-size: 4rem;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+/* Last updated */
+.date-time {
+  opacity: 45%;
+  margin-bottom: 2rem;
+}
+
+.current-date-time::before {
+  content: "Last updated: ";
+}
+
+/* Weather details */
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.details,
+.bottom-section,
+#celsius-fahrenheit {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+}
+
+/* Forecast */
+.bottom-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0 1rem;
+}
+
+.weather-forecast-icon {
+  width: 40%;
+}
+
+.forecast-text {
+  margin-bottom: 0;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 300px) {
+  .container {
+    width: 90%;
+  }
+  #current-city {
+    font-size: 2.5rem;
+  }
+  body {
+    background-size: 320%;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .container {
+    width: 80%;
+  }
+  #search-form {
+    font-size: 1.5rem;
+  }
+  #temperature {
+    font-size: 4rem;
+  }
+  .current-weather-section {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  img.weather-icon {
+    width: 30%;
+  }
+
+  #current-city {
+    font-size: 3rem;
+  }
+  .details {
+    font-size: 1.5rem;
+  }
+  .forecast-text {
+    font-size: 1.3rem;
+  }
+  body {
+    background-size: 300%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .container {
+    width: 90%;
+  }
+  .current-weather-section {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  img.weather-icon {
+    width: 20%;
+  }
+
+  #current-city {
+    font-size: 3rem;
+  }
+
+  .details,
+  #celsius-fahrenheit {
+    font-size: 1.5rem;
+  }
+
+  .forecast-text {
+    font-size: 1.5rem;
+  }
+  body {
+    background-size: 160%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .current-weather-section {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  #current-city {
+    font-size: 3.5rem;
+  }
 }
