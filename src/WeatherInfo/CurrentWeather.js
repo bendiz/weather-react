@@ -4,7 +4,7 @@ import WeatherDetails from "./WeatherDetails";
 
 function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
   // Checks if temperature and icon exist
-  !temp ? (temp = "") : (temp = temp);
+  !temp ? (temp = "12") : (temp = temp);
   !icon ? (icon = "02d") : (icon = icon);
   !wind ? ([wind, humidity] = "") : (wind = wind);
 

@@ -1,4 +1,6 @@
-function Forecast() {
+function Forecast({ city, apiKey }) {
+  const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+
   return (
     <div class="bottom-section">
       <div class="weather-forecast-one">

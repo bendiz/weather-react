@@ -1,5 +1,3 @@
-import CurrentWeather from "./CurrentWeather";
-
 function CurrentDay({ date }) {
   const daysOfWeek = [
     "Sunday",

@@ -1,14 +1,15 @@
 import Location from "./Location";
-import CurrentCity from "./CurrentCity";
-import CurrentWeather from "./CurrentWeather";
-import CurrentDay from "./CurrentDay";
-import Forecast from "./Forecast";
-import LastUpdated from "./LastUpdated";
+import CurrentCity from "../WeatherInfo/CurrentCity";
+import CurrentWeather from "../WeatherInfo/CurrentWeather";
+import CurrentDay from "../WeatherInfo/CurrentDay";
+import Forecast from "../WeatherInfo/Forecast";
+import LastUpdated from "../WeatherInfo/LastUpdated";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 
 function Search() {
+  const apiKey = "035283d2ed3751237392ce4250953768";
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState("");
   const [temperature, setTemperature] = useState(null);
@@ -21,7 +22,6 @@ function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiKey = "035283d2ed3751237392ce4250953768";
     const units = "metric";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     setLoading(true);
@@ -34,7 +34,6 @@ function Search() {
     setWind(response.data.wind.speed);
     setHumidity(response.data.main.humidity);
     console.log(response.data);
-    // setLastUpdated(response.data)
     setLoading(false);
   }
 
@@ -73,7 +72,7 @@ function Search() {
           />
         )
       : // Display nothing when length of input is at 0
-        setWeatherMessage(" ");
+        setWeatherMessage("");
   }, [loading, city, temperature]);
 
   return (
@@ -98,7 +97,7 @@ function Search() {
         humidity={weatherMessage[4]}
         date={date}
       />
-      <Forecast />
+      <Forecast city={weatherMessage[1]} apiKey={apiKey} />
       <LastUpdated date={date} />
     </div>
   );

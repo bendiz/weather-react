@@ -1,15 +1,15 @@
-import "./App.css";
-import Card from "./Card";
+import { Fragment } from "react";
+import Card from "./WeatherCard";
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
       <body>
         <div class="container">
           <Card />
         </div>
       </body>
-    </div>
+    </Fragment>
   );
 }
 
