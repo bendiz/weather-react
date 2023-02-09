@@ -1,12 +1,10 @@
-import Location from "./Location";
-import CurrentCity from "../WeatherInfo/CurrentCity";
-import CurrentWeather from "../WeatherInfo/CurrentWeather";
-import CurrentDay from "../WeatherInfo/CurrentDay";
-import Forecast from "../WeatherInfo/Forecast";
-import LastUpdated from "../WeatherInfo/LastUpdated";
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
+import Location from "./Location";
+import CurrentWeather from "../WeatherInfo/CurrentWeather";
+import Forecast from "../WeatherInfo/Forecast";
+import LastUpdated from "../WeatherInfo/LastUpdated";
 
 function Search() {
   const apiKey = "035283d2ed3751237392ce4250953768";
@@ -17,14 +15,15 @@ function Search() {
   const [loading, setLoading] = useState(true);
   const [wind, setWind] = useState(null);
   const [humidity, setHumidity] = useState(null);
-  const [lastUpdated, setLastUpdated] = useState(null);
+  const [lastCity, setLastCity] = useState("");
   const date = new Date();
 
   function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
+    setLastCity(city);
     const units = "metric";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    setLoading(true);
     axios.get(apiUrl).then(handleResponse).catch(handleError);
   }
 
@@ -33,12 +32,11 @@ function Search() {
     setWeatherIcon(response.data.weather[0].icon);
     setWind(response.data.wind.speed);
     setHumidity(response.data.main.humidity);
-    console.log(response.data);
     setLoading(false);
   }
 
   function updateCity(event) {
-    event.preventDefault();
+    // event.preventDefault();
     setCity(event.target.value);
     setLoading(true);
   }
@@ -51,29 +49,15 @@ function Search() {
   // Delays the message from appearing before state of temperature is changed
   useEffect(() => {
     temperature && !loading
-      ? setWeatherMessage([
-          temperature,
-          city,
-          weatherIcon,
-          wind,
-          humidity,
-          lastUpdated,
-        ])
+      ? setWeatherMessage([temperature, city, weatherIcon, wind, humidity])
       : // While search input gets changed a loading animation appears
-      loading && city.length > 0
-      ? setWeatherMessage(
-          <BeatLoader
-            color="#306974"
-            loading={loading}
-            cssOverride={false}
-            size={5}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        )
+      temperature && loading
+      ? setWeatherMessage([temperature, lastCity, weatherIcon, wind, humidity])
       : // Display nothing when length of input is at 0
         setWeatherMessage("");
   }, [loading, city, temperature]);
+  console.log(loading);
+  console.log(temperature);
 
   return (
     <div className="Search">
@@ -82,13 +66,25 @@ function Search() {
           type="search"
           name="search"
           id="search"
-          autofocus
-          maxlength="14"
-          minlength="2"
+          autoFocus
+          maxLength="14"
+          minLength="2"
           onChange={updateCity}
         />
         <Location />
       </form>
+      {loading ? (
+        <BeatLoader
+          color="#306974"
+          loading={loading}
+          cssOverride={false}
+          size={5}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        ""
+      )}
       <CurrentWeather
         temp={weatherMessage[0]}
         city={weatherMessage[1]}
