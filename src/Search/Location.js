@@ -1,7 +1,14 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 function Location({ city }) {
+  Location.propTypes = {
+    city: PropTypes.string.isRequired,
+  };
+
   return (
-    <button id="geo-button" onclick="onclick">
-      <i class="fa-solid fa-location-dot"></i>
+    <button id="geo-button" onClick="onclick">
+      <i className="fa-solid fa-location-dot"></i>
     </button>
   );
 }

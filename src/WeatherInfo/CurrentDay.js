@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 function CurrentDay({ date, temp }) {
   /**
    * Finds day of the week and displays it on the weather card
@@ -6,6 +9,11 @@ function CurrentDay({ date, temp }) {
    * @param {string | number} temp - The current temperature or an empty string placeholder - Passed from CurrentWeather.
    * @returns {JSX.Element} - Checks if the temp is placeholder or real temperature and displays the day
    */
+
+  CurrentDay.propTypes = {
+    date: PropTypes.object.isRequired,
+    temp: PropTypes.number.isRequired,
+  };
 
   const daysOfWeek = [
     "Sunday",

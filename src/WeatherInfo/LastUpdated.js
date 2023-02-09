@@ -1,5 +1,6 @@
 import React from "react";
 import ReactTimeAgo from "react-time-ago";
+import PropTypes from "prop-types";
 
 function LastUpdated({ date }) {
   /**
@@ -8,9 +9,12 @@ function LastUpdated({ date }) {
    * @param {Object} date - The current date - passed from Search.
    * @returns {JSX.Element} - Returns the JSX representation of the time since last updated.
    */
+  LastUpdated.propTypes = {
+    date: PropTypes.object.isRequired,
+  };
   return (
-    <aside class="date-time" id="date-time">
-      <time datetime="2023-02-04">
+    <aside className="date-time" id="date-time">
+      <time dateTime="2023-02-04">
         <ReactTimeAgo date={date} locale="en-US" />
       </time>
     </aside>

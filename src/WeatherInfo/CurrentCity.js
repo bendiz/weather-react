@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 function CurrentCity({ city }) {
   /**
    * Displays the current city if user has searched for it
@@ -5,6 +8,10 @@ function CurrentCity({ city }) {
    * @param {string} city - The current city - passed from CurrentWeather.
    * @returns {JSX.Element} - Returns the JSX representation of the city name.
    */
+
+  CurrentCity.propTypes = {
+    city: PropTypes.string.isRequired,
+  };
 
   city = city || "Search for a city";
   return (

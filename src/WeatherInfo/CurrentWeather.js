@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import CurrentCity from "./CurrentCity";
 import CurrentDay from "./CurrentDay";
 import WeatherDetails from "./WeatherDetails";
@@ -18,6 +20,14 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
    * @returns {JSX.Element} - Returns the JSX representation. Includes weather icon if it exists (or placeholder), and 
      current temperature if it exists or a placeholder string if not.
    */
+  CurrentWeather.propTypes = {
+    temp: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    wind: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    date: PropTypes.object.isRequired,
+  };
 
   temp = Math.round(temp) || "";
   let weatherIcon = icon || "01d";
@@ -29,10 +39,10 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
   const url = `/img/weather-icons/${weatherIcon}.png`;
   return (
     <div>
-      <div class="current-weather-section">
-        <img src={url} alt="Weather Icon" class="weather-icon" />
-        <div class="temperature-container">
-          <link class="current-temp" />
+      <div className="current-weather-section">
+        <img src={url} alt="Weather Icon" className="weather-icon" />
+        <div className="temperature-container">
+          <link className="current-temp" />
           <h2 id="temperature">{temp}</h2>
           <a href="/" id="celsius-fahrenheit">
             {temp !== "" ? `°C` : temp}

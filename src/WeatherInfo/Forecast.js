@@ -1,52 +1,59 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 function Forecast({ city, apiKey }) {
   // const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+  Forecast.propTypes = {
+    city: PropTypes.string.isRequired,
+    apiKey: PropTypes.string.isRequired,
+  };
 
   return (
-    <div class="bottom-section">
-      <div class="weather-forecast-one">
-        <p class="forecast-text">2°C</p>
+    <div className="bottom-section">
+      <div className="weather-forecast-one">
+        <p className="forecast-text">2°C</p>
         <img
           src="/img/weather-icons/09d.png"
           alt="Raining"
-          class="weather-forecast-icon"
+          className="weather-forecast-icon"
         />
-        <p class="forecast-text">Sun</p>
+        <p className="forecast-text">Sun</p>
       </div>
-      <div class="weather-forecast-two">
-        <p class="forecast-text">5°C</p>
+      <div className="weather-forecast-two">
+        <p className="forecast-text">5°C</p>
         <img
           src="/img/weather-icons/03d.png"
           alt="Snow"
-          class="weather-forecast-icon"
+          className="weather-forecast-icon"
         />
-        <p class="forecast-text">Mon</p>
+        <p className="forecast-text">Mon</p>
       </div>
-      <div class="weather-forecast-three">
-        <p class="forecast-text">6°C</p>
+      <div className="weather-forecast-three">
+        <p className="forecast-text">6°C</p>
         <img
           src="/img/weather-icons/01d.png"
           alt="Sunny, but cloudy."
-          class="weather-forecast-icon"
+          className="weather-forecast-icon"
         />
-        <p class="forecast-text">Tue</p>
+        <p className="forecast-text">Tue</p>
       </div>
-      <div class="weather-forecast-four">
-        <p class="forecast-text">7°C</p>
+      <div className="weather-forecast-four">
+        <p className="forecast-text">7°C</p>
         <img
           src="/img/weather-icons/03d.png"
           alt="Partly Cloudly"
-          class="weather-forecast-icon"
+          className="weather-forecast-icon"
         />
-        <p class="forecast-text">Wed</p>
+        <p className="forecast-text">Wed</p>
       </div>
-      <div class="weather-forecast-five">
-        <p class="forecast-text">4°C</p>
+      <div className="weather-forecast-five">
+        <p className="forecast-text">4°C</p>
         <img
           src="/img/weather-icons/02d.png"
           alt="Cloudy"
-          class="weather-forecast-icon"
+          className="weather-forecast-icon"
         />
-        <p class="forecast-text">Thu</p>
+        <p className="forecast-text">Thu</p>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ function Search() {
   const [weatherMessage, setWeatherMessage] = useState("");
   const [temperature, setTemperature] = useState(null);
   const [weatherIcon, setWeatherIcon] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [wind, setWind] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const [lastCity, setLastCity] = useState("");
@@ -36,7 +36,6 @@ function Search() {
   }
 
   function updateCity(event) {
-    // event.preventDefault();
     setCity(event.target.value);
     setLoading(true);
   }
@@ -56,8 +55,6 @@ function Search() {
       : // Display nothing when length of input is at 0
         setWeatherMessage("");
   }, [loading, city, temperature]);
-  console.log(loading);
-  console.log(temperature);
 
   return (
     <div className="Search">
@@ -73,7 +70,7 @@ function Search() {
         />
         <Location />
       </form>
-      {loading ? (
+      {loading && city.length > 0 ? (
         <BeatLoader
           color="#306974"
           loading={loading}

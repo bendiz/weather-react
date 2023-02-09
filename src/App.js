@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import { React, Fragment } from "react";
 import WeatherCard from "./WeatherCard";
 
 function App() {
   return (
     <Fragment>
       <body>
-        <div class="container">
+        <div className="container">
           <WeatherCard />
         </div>
       </body>
