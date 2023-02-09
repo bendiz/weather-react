@@ -1,0 +1,19 @@
+1. Geo Button
+    - Ask for coords when user presses button
+        - API call with lat, long (through Search)
+    - Find better solution for placement inside search bar.
+    
+2. Forecast
+    - Fetch correct days relative to current day
+    - Fetch correct temperature
+    - Fetch correct Icons
+
+3. Celsius to Fahrenheit
+    - Conversion for current temperature
+    - Conversion for forecast temperatures
+
+4. NightMode
+ - Check if icon name includes "n"
+    - Dark icons
+    - Grey card
+    - Dark Background
