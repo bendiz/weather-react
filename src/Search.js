@@ -12,6 +12,8 @@ function Search() {
   const [temperature, setTemperature] = useState(null);
   const [weatherIcon, setWeatherIcon] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [wind, setWind] = useState(null);
+  const [humidity, setHumidity] = useState(null);
   const date = new Date();
 
   function handleSubmit(event) {
@@ -26,7 +28,8 @@ function Search() {
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
     setWeatherIcon(response.data.weather[0].icon);
-    // setWeatherIcon(response.data.)
+    setWind(response.data.wind.speed);
+    setHumidity(response.data.main.humidity);
     setLoading(false);
   }
 
@@ -44,7 +47,7 @@ function Search() {
   // Delays the message from appearing before state of temperature is changed
   useEffect(() => {
     temperature && !loading
-      ? setWeatherMessage([temperature, city, weatherIcon])
+      ? setWeatherMessage([temperature, city, weatherIcon, wind, humidity])
       : // While search input gets changed a loading animation appears
       loading && city.length > 0
       ? setWeatherMessage(
@@ -69,16 +72,19 @@ function Search() {
           name="search"
           id="search"
           autofocus
-          placeholder="Search for a city here..."
           maxlength="14"
           minlength="2"
           onChange={updateCity}
         />
         <Location />
       </form>
-      <CurrentWeather temp={weatherMessage[0]} icon={weatherMessage[2]} />
-      <CurrentCity city={weatherMessage[1]} />
-      <CurrentDay />
+      <CurrentWeather
+        temp={weatherMessage[0]}
+        city={weatherMessage[1]}
+        icon={weatherMessage[2]}
+        wind={weatherMessage[3]}
+        humidity={weatherMessage[4]}
+      />
     </div>
   );
 }

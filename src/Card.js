@@ -7,7 +7,6 @@ function Card() {
   return (
     <div class="weather-card">
       <Search />
-      <WeatherDetails />
       <Forecast />
       <LastUpdated />
     </div>
