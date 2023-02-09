@@ -7,8 +7,6 @@ function Card() {
   return (
     <div class="weather-card">
       <Search />
-      <Forecast />
-      <LastUpdated />
     </div>
   );
 }

@@ -1,4 +1,6 @@
-function CurrentDay() {
+import CurrentWeather from "./CurrentWeather";
+
+function CurrentDay({ date }) {
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -8,7 +10,7 @@ function CurrentDay() {
     "Friday",
     "Saturday",
   ];
-  const day = daysOfWeek[new Date().getDay()];
+  const day = daysOfWeek[date.getDay()];
 
   return (
     <h3 class="current-day" id="current-day">

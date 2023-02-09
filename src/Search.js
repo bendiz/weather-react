@@ -2,6 +2,8 @@ import Location from "./Location";
 import CurrentCity from "./CurrentCity";
 import CurrentWeather from "./CurrentWeather";
 import CurrentDay from "./CurrentDay";
+import Forecast from "./Forecast";
+import LastUpdated from "./LastUpdated";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -14,6 +16,7 @@ function Search() {
   const [loading, setLoading] = useState(true);
   const [wind, setWind] = useState(null);
   const [humidity, setHumidity] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
   const date = new Date();
 
   function handleSubmit(event) {
@@ -30,6 +33,8 @@ function Search() {
     setWeatherIcon(response.data.weather[0].icon);
     setWind(response.data.wind.speed);
     setHumidity(response.data.main.humidity);
+    console.log(response.data);
+    // setLastUpdated(response.data)
     setLoading(false);
   }
 
@@ -47,7 +52,14 @@ function Search() {
   // Delays the message from appearing before state of temperature is changed
   useEffect(() => {
     temperature && !loading
-      ? setWeatherMessage([temperature, city, weatherIcon, wind, humidity])
+      ? setWeatherMessage([
+          temperature,
+          city,
+          weatherIcon,
+          wind,
+          humidity,
+          lastUpdated,
+        ])
       : // While search input gets changed a loading animation appears
       loading && city.length > 0
       ? setWeatherMessage(
@@ -84,7 +96,10 @@ function Search() {
         icon={weatherMessage[2]}
         wind={weatherMessage[3]}
         humidity={weatherMessage[4]}
+        date={date}
       />
+      <Forecast />
+      <LastUpdated date={date} />
     </div>
   );
 }

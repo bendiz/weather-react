@@ -2,7 +2,7 @@ import CurrentCity from "./CurrentCity";
 import CurrentDay from "./CurrentDay";
 import WeatherDetails from "./WeatherDetails";
 
-function CurrentWeather({ temp, city, icon, wind, humidity }) {
+function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
   // Checks if temperature and icon exist
   !temp ? (temp = "") : (temp = temp);
   !icon ? (icon = "02d") : (icon = icon);
@@ -22,7 +22,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity }) {
         </div>
       </div>
       <CurrentCity city={city} />
-      <CurrentDay />
+      <CurrentDay date={date} />
       <WeatherDetails wind={wind} humidity={humidity} />
     </div>
   );
