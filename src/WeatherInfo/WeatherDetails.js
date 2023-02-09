@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 
 function WeatherDetails({ wind, humidity }) {
+  /**
+   * Displays the wind and humidity if the user has entered a valid city name - else it renders them as empty strings.
+   *
+   * @param {Number | undefined} wind - The current wind speed - passed from CurrentWeather.
+   * @param {Number | undefined} humidity - The current humidity - passed from CurrentWeather.
+   * @returns {JSX.Element} - Returns the JSX representation.
+   */
+
   let [windReport, setWindReport] = useState(null);
   let [humidityReport, setHumidityReport] = useState(null);
 

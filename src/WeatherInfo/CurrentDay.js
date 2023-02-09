@@ -1,4 +1,12 @@
-function CurrentDay({ date }) {
+function CurrentDay({ date, temp }) {
+  /**
+   * Finds day of the week and displays it on the weather card
+   *
+   * @param {Object} date - The current date - Passed from CurrentWeather.
+   * @param {string | number} temp - The current temperature or an empty string placeholder - Passed from CurrentWeather.
+   * @returns {JSX.Element} - Checks if the temp is placeholder or real temperature and displays the day
+   */
+
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -11,8 +19,8 @@ function CurrentDay({ date }) {
   const day = daysOfWeek[date.getDay()];
 
   return (
-    <h3 class="current-day" id="current-day">
-      {day}
+    <h3 className="current-day" id="current-day">
+      {temp !== "" ? day : ""}
     </h3>
   );
 }

@@ -190,7 +190,7 @@ h3 {
     font-size: 2.5rem;
   }
   body {
-    background-size: 320%;
+    background-size: 550%;
   }
   #geo-button {
     margin-top: -2.5vw;
@@ -240,7 +240,7 @@ h3 {
     font-size: 1.3rem;
   }
   body {
-    background-size: 300%;
+    background-size: 450%;
   }
 }
 
@@ -274,7 +274,7 @@ h3 {
     font-size: 1.5rem;
   }
   body {
-    background-size: 160%;
+    background-size: 250%;
   }
 }
 
@@ -289,5 +289,14 @@ h3 {
   }
   #current-city {
     font-size: 3.5rem;
+  }
+  body {
+    background-size: 200%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 40%;
   }
 }
