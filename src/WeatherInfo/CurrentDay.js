@@ -23,7 +23,7 @@ function CurrentDay({ date, temp }) {
 
   return (
     <h3 className="current-day" id="current-day">
-      {temp !== "" ? day : ""}
+      {temp === undefined ? "" : day}
     </h3>
   );
 }
