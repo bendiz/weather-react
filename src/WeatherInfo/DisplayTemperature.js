@@ -7,7 +7,7 @@ function DisplayTemperature({temp}) {
      useEffect(() => {
         setTemperature(temp);
     }, [temp]);
-    
+
     function handleClick(event) {
         temperatureConversion();
     }
@@ -24,15 +24,15 @@ function DisplayTemperature({temp}) {
 
     return <div className="temperature-container">
           <link className="current-temp" />
-          <h2 id="temperature">{Math.round(temperature)}</h2>
+          <h2 id="temperature">{temperature !== undefined? Math.round(temperature) : "" }</h2>
           <a href="#" id="celsius-fahrenheit" onClick={handleClick} title="convert between °F|°C">
-            {unit}
+            {temperature !== undefined? unit : ""}
           </a>
         </div>
 };
 
 DisplayTemperature.propTypes = {
-        temp: PropTypes.number.isRequired,
+        temp: PropTypes.number,
     }
 
 export default DisplayTemperature;

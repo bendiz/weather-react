@@ -11,7 +11,7 @@ function LastUpdated({ date }) {
    */
   return (
     <aside className="date-time" id="date-time">
-      <time dateTime="2023-02-04">
+      <time>
         <ReactTimeAgo date={date} locale="en-US" />
       </time>
     </aside>

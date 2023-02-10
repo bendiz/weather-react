@@ -21,17 +21,17 @@ function Search() {
   const [userInput, setUserInput] = useState(null);
   const date = new Date();
 
-    function handleApiRequest(latitude, longitude) {
+  function handleApiRequest(latitude, longitude) {
     const units = "metric";
     let apiUrl;
     if (latitude && longitude && !userInput) {
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-} else if (latitude && longitude && userInput) {
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-} else {
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-}
+        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  } else if (latitude && longitude && userInput) {
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  } else {
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
+  }
   }
 
 
