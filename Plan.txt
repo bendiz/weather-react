@@ -9,8 +9,7 @@
     - Fetch correct Icons
 
 3. Celsius to Fahrenheit
-    - Conversion for current temperature
-    - Conversion for forecast temperatures
+      - Occupy space of C when inserting F to avoid UI from doing a little jump to the right.
 
 4. NightMode
  - Check if icon name includes "n"

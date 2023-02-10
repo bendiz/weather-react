@@ -21,16 +21,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
    * @returns {JSX.Element} - Returns the JSX representation. Includes weather icon if it exists (or placeholder), and 
      current temperature if it exists or a placeholder string if not.
    */
-  CurrentWeather.propTypes = {
-    temp: PropTypes.number.isRequired,
-    city: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    wind: PropTypes.number.isRequired,
-    humidity: PropTypes.number.isRequired,
-    date: PropTypes.object.isRequired,
-  };
 
-  temp = Math.round(temp) || "";
   let weatherIcon = icon || "01d";
 
   // Prevents night icons for now
@@ -51,5 +42,14 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
     </div>
   );
 }
+
+CurrentWeather.propTypes = {
+    temp: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    wind: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    date: PropTypes.object.isRequired,
+  };
 
 export default CurrentWeather;
