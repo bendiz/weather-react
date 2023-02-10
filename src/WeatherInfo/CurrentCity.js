@@ -9,10 +9,6 @@ function CurrentCity({ city }) {
    * @returns {JSX.Element} - Returns the JSX representation of the city name.
    */
 
-  CurrentCity.propTypes = {
-    city: PropTypes.string.isRequired,
-  };
-
   city = city || "Search for a city";
   return (
     <div className="city-section">
@@ -22,5 +18,9 @@ function CurrentCity({ city }) {
     </div>
   );
 }
+
+CurrentCity.propTypes = {
+    city: PropTypes.string,
+  };
 
 export default CurrentCity;

@@ -26,9 +26,8 @@ function Search() {
     let apiUrl;
     if (latitude && longitude && !userInput) {
         apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  } else if (latitude && longitude && userInput) {
-    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  } else {
+        axios.get(apiUrl).then(handleResponse).catch(handleError);
+  } else if (latitude && longitude || userInput) {
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
   }
@@ -66,7 +65,7 @@ function Search() {
 
   // Displays an error message for the user if the city does not exist in API
   function handleError() {
-    setWeatherMessage("Invalid name! Please enter a valid city name");
+    alert("Invalid name! Please enter a valid city name");
   }
 
   // Delays the message from appearing before state of temperature is changed
