@@ -10,5 +10,9 @@
   },
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "editor.codeActionsOnSave": {},
-  "editor.semanticTokenColorCustomizations": {}
+  "editor.semanticTokenColorCustomizations": {},
+  "files.associations": {
+  "*.js": "javascriptreact",
+  "*.jsx": "javascriptreact",
+  }
 }

@@ -24,3 +24,4 @@ yarn-error.log*
 public/favicon.ico
 public/logo192.png
 public/logo512.png
+.vscode/settings.json
