@@ -8,6 +8,7 @@ import LastUpdated from "../WeatherInfo/LastUpdated";
 
 function Search() {
   const apiKey = "035283d2ed3751237392ce4250953768";
+  const units = "metric";
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState("");
   const [temperature, setTemperature] = useState(null);
@@ -19,10 +20,11 @@ function Search() {
   const [latitude, setLatitude] = useState(null)
   const [longitude, setLongitude] = useState(null);
   const [userInput, setUserInput] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
   const date = new Date();
 
   function handleApiRequest(latitude, longitude) {
-    const units = "metric";
     let apiUrl;
     if (latitude && longitude && !userInput) {
         apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
@@ -55,6 +57,8 @@ function Search() {
     setHumidity(response.data.main.humidity);
     setLoading(false);
     setCity(response.data.name)
+    setLon(response.data.coord.lon)
+    setLat(response.data.coord.lat)
   }
 
   function updateCity(event) {
@@ -62,6 +66,7 @@ function Search() {
     setUserInput(true);
     setLoading(true);
   }
+
 
   // Displays an error message for the user if the city does not exist in API
   function handleError() {
@@ -113,7 +118,7 @@ function Search() {
         humidity={weatherMessage[4]}
         date={date}
       />
-      <Forecast city={weatherMessage[1]} apiKey={apiKey} />
+      <Forecast city={weatherMessage[1]} date={date} lat={lat} lon={lon} units={units} apiKey={apiKey}/>
       <LastUpdated date={date} />
     </div>
   );

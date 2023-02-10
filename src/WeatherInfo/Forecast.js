@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Forecast({ city, apiKey }) {
-  // const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+function Forecast({ city, date, lat, lon, units, apiKey }) {
+  // const apiUrl = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  // axios.get(apiUrl).then(handleResponse).catch(handleError);
+
+  // function handleResponse(response) {
+  // }
+
+
+
 
   return (
     <div className="bottom-section">
@@ -56,6 +63,10 @@ function Forecast({ city, apiKey }) {
 }
  Forecast.propTypes = {
     city: PropTypes.string,
+    date: PropTypes.object,
+    lat: PropTypes.number,
+    lon: PropTypes.number,
+    units: PropTypes.string,
     apiKey: PropTypes.string
   };
 
