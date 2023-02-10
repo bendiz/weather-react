@@ -24,8 +24,9 @@ function WeatherDetails({ wind, humidity }) {
   }
 
   useEffect(() => {
-    wind && humidity ? setReports(true) : setReports(false);
+    wind || humidity ? setReports(true) : setReports(false);
   }, [wind, humidity]);
+
 
   return (
     <div className="details">
