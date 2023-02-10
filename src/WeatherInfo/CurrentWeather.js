@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import CurrentCity from "./CurrentCity";
 import CurrentDay from "./CurrentDay";
 import WeatherDetails from "./WeatherDetails";
+import DisplayTemperature from "./DisplayTemperature";
 
 function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
   /**
@@ -31,6 +32,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
 
   temp = Math.round(temp) || "";
   let weatherIcon = icon || "01d";
+
   // Prevents night icons for now
   if (weatherIcon.includes("n")) {
     weatherIcon = weatherIcon.substr(0, 2) + "d";
@@ -41,13 +43,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
     <div>
       <div className="current-weather-section">
         <img src={url} alt="Weather Icon" className="weather-icon" />
-        <div className="temperature-container">
-          <link className="current-temp" />
-          <h2 id="temperature">{temp}</h2>
-          <a href="/" id="celsius-fahrenheit">
-            {temp !== "" ? `°C` : temp}
-          </a>
-        </div>
+        <DisplayTemperature temp={temp}/>
       </div>
       <CurrentCity city={city} />
       <CurrentDay date={date} temp={temp} />
