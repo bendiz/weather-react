@@ -7,10 +7,6 @@ function Forecast({ city, date, lat, lon, units, apiKey }) {
 
   // function handleResponse(response) {
   // }
-
-
-
-
   return (
     <div className="bottom-section">
       <div className="weather-forecast-one">

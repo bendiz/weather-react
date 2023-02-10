@@ -22,6 +22,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
      current temperature if it exists or a placeholder string if not.
    */
 
+  //  Choose a default icon before user search
   let weatherIcon = icon || "01d";
 
   // Prevents night icons for now

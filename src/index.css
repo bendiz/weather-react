@@ -1,3 +1,7 @@
+:root {
+  --alt-color: #ccc;
+}
+
 /* BACKGROUND */
 body {
   text-align: center;
@@ -66,10 +70,6 @@ form {
   opacity: 40%;
 }
 
-#geo-button:hover {
-  color: var(--alt-color);
-}
-
 input:focus {
   outline-color: #fff;
   outline-style: double;
@@ -119,7 +119,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-weight: 400;
 }
 
-#celsius-fahrenheit:hover {
+#celsius-fahrenheit:hover, #geo-button:hover {
   color: var(--alt-color);
 }
 
