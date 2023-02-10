@@ -1,7 +1,6 @@
 1. Geo Button
-    - Ask for coords when user presses button
-        - API call with lat, long (through Search)
     - Find better solution for placement inside search bar.
+    - Display message when user clicks button but has disabled location services
     
 2. Forecast
     - Fetch correct days relative to current day
@@ -9,10 +8,14 @@
     - Fetch correct Icons
 
 3. Celsius to Fahrenheit
-      - Occupy space of C when inserting F to avoid UI from doing a little jump to the right.
+    - Conversion for current temperature
+    - Conversion for forecast temperatures
 
 4. NightMode
  - Check if icon name includes "n"
     - Dark icons
     - Grey card
     - Dark Background
+
+5. Last updated
+    - Only update time when user has submitted form or used location.
