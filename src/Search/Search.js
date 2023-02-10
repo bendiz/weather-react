@@ -16,15 +16,37 @@ function Search() {
   const [wind, setWind] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const [lastCity, setLastCity] = useState("");
+  const [latitude, setLatitude] = useState(null)
+  const [longitude, setLongitude] = useState(null);
+  const [userInput, setUserInput] = useState(null);
   const date = new Date();
+
+    function handleApiRequest(latitude, longitude) {
+    const units = "metric";
+    let apiUrl;
+    if (latitude && longitude && !userInput) {
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+} else if (latitude && longitude && userInput) {
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+} else {
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+}
+    axios.get(apiUrl).then(handleResponse).catch(handleError);
+  }
+
+
+  function handleGeoLocation(latitude, longitude) {
+    setLatitude(latitude);
+    setLongitude(longitude);
+    handleApiRequest(latitude, longitude);
+
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
     setLastCity(city);
-    const units = "metric";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(handleResponse).catch(handleError);
+    handleApiRequest()
   }
 
   function handleResponse(response) {
@@ -33,10 +55,12 @@ function Search() {
     setWind(response.data.wind.speed);
     setHumidity(response.data.main.humidity);
     setLoading(false);
+    setCity(response.data.name)
   }
 
   function updateCity(event) {
     setCity(event.target.value);
+    setUserInput(true);
     setLoading(true);
   }
 
@@ -68,7 +92,7 @@ function Search() {
           minLength="2"
           onChange={updateCity}
         />
-        <Location />
+        <Location onGeoLocation={handleGeoLocation} Location={[latitude, longitude]} />
       </form>
       {loading && city.length > 0 ? (
         <BeatLoader
