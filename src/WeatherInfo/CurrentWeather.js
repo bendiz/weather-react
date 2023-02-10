@@ -44,12 +44,12 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
 }
 
 CurrentWeather.propTypes = {
-    temp: PropTypes.number.isRequired,
-    city: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    wind: PropTypes.number.isRequired,
-    humidity: PropTypes.number.isRequired,
-    date: PropTypes.object.isRequired,
+    temp: PropTypes.number,
+    city: PropTypes.string,
+    icon: PropTypes.string,
+    wind: PropTypes.number,
+    humidity: PropTypes.number,
+    date: PropTypes.object
   };
 
 export default CurrentWeather;

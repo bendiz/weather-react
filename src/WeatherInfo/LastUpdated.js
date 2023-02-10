@@ -9,9 +9,6 @@ function LastUpdated({ date }) {
    * @param {Object} date - The current date - passed from Search.
    * @returns {JSX.Element} - Returns the JSX representation of the time since last updated.
    */
-  LastUpdated.propTypes = {
-    date: PropTypes.object.isRequired,
-  };
   return (
     <aside className="date-time" id="date-time">
       <time dateTime="2023-02-04">
@@ -20,5 +17,8 @@ function LastUpdated({ date }) {
     </aside>
   );
 }
+ LastUpdated.propTypes = {
+    date: PropTypes.object.isRequired,
+  };
 
 export default LastUpdated;

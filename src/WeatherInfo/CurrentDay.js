@@ -10,11 +10,6 @@ function CurrentDay({ date, temp }) {
    * @returns {JSX.Element} - Checks if the temp is placeholder or real temperature and displays the day
    */
 
-  CurrentDay.propTypes = {
-    date: PropTypes.object.isRequired,
-    temp: PropTypes.number.isRequired,
-  };
-
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -32,5 +27,10 @@ function CurrentDay({ date, temp }) {
     </h3>
   );
 }
+
+ CurrentDay.propTypes = {
+    date: PropTypes.object,
+    temp: PropTypes.number
+  };
 
 export default CurrentDay;

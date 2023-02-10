@@ -10,11 +10,6 @@ function WeatherDetails({ wind, humidity }) {
    * @returns {JSX.Element} - Returns the JSX representation.
    */
 
-  WeatherDetails.propTypes = {
-    wind: PropTypes.number.isRequired,
-    humidity: PropTypes.number.isRequired,
-  };
-
   const [windReport, setWindReport] = useState(null);
   const [humidityReport, setHumidityReport] = useState(null);
 
@@ -39,5 +34,10 @@ function WeatherDetails({ wind, humidity }) {
     </div>
   );
 }
+
+WeatherDetails.propTypes = {
+    wind: PropTypes.number,
+    humidity: PropTypes.number
+  };
 
 export default WeatherDetails;

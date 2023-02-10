@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 
 function Forecast({ city, apiKey }) {
   // const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
-  Forecast.propTypes = {
-    city: PropTypes.string.isRequired,
-    apiKey: PropTypes.string.isRequired,
-  };
 
   return (
     <div className="bottom-section">
@@ -58,5 +54,9 @@ function Forecast({ city, apiKey }) {
     </div>
   );
 }
+ Forecast.propTypes = {
+    city: PropTypes.string,
+    apiKey: PropTypes.string
+  };
 
 export default Forecast;

@@ -1,11 +1,13 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import PropTypes from "prop-types";
 
 function DisplayTemperature({temp}) {
     const [unit, setUnit] = useState(`°C`);
     const [temperature, setTemperature] = useState(temp);
-    console.log(temperature, temp)
-    setTemperature(temp);
+     useEffect(() => {
+        setTemperature(temp);
+    }, [temp]);
+    
     function handleClick(event) {
         temperatureConversion();
     }
