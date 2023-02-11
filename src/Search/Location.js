@@ -16,7 +16,7 @@ function Location({ onGeoLocation }) {
   }
 
   return (
-    <button id="geo-button" onClick={handleClick}>
+    <button className="Location" id="geo-button" onClick={handleClick}>
       <i className="fa-solid fa-location-dot"></i>
     </button>
   );

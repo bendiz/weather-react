@@ -29,7 +29,7 @@ function WeatherDetails({ wind, humidity }) {
 
 
   return (
-    <div className="details">
+    <div className="WeatherDetails details">
       <span id="wind-speed">{windReport}</span>
       <span id="humidity">{humidityReport}</span>
     </div>

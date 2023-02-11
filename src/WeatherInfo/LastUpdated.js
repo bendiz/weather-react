@@ -10,7 +10,7 @@ function LastUpdated({ date }) {
    * @returns {JSX.Element} - Returns the JSX representation of the time since last updated.
    */
   return (
-    <aside className="date-time" id="date-time">
+    <aside className="LastUpdated date-time" id="date-time">
       <time>
         <ReactTimeAgo date={date} locale="en-US" />
       </time>

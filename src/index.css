@@ -34,13 +34,13 @@ body,
 /* WEATHER CARD */
 
 /* Search field */
-form {
+.Search form {
   display: flex; /* Get input field and geobutton on the same line */
   font-size: 2rem;
   align-items: center;
 }
 
-#search {
+.Search #search {
   color: #fff;
   width: 90%;
   border: 0;
@@ -50,17 +50,34 @@ form {
   background-color: rgba(82, 174, 196, 0.54);
 }
 
-.fa-location-dot {
+.Search input:focus {
+  outline-color: #fff;
+  outline-style: double;
+}
+.Search input[type="search"] {
+  background: url(/public/img/assets/search.svg) no-repeat;
+  background-position: 2% 50%;
+}
+
+.Search input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Location */
+.Location .fa-location-dot {
   font-size: 1.3rem;
   margin-top: 1rem;
 }
 
-#location-btn {
+.Location#location-btn {
   background: transparent;
   border: 0;
 }
 
-#geo-button {
+.Location#geo-button {
   margin-top: 1.2vw;
   text-align: center;
   position: relative;
@@ -70,20 +87,6 @@ form {
   opacity: 40%;
 }
 
-input:focus {
-  outline-color: #fff;
-  outline-style: double;
-}
-input[type="search"] {
-  background: url(/public/img/assets/search.svg) no-repeat;
-  background-position: 2% 50%;
-}
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  display: none;
-}
 /* Weather card body */
 .container {
   width: 55%;
@@ -99,7 +102,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /* Current weather section */
-.current-weather-section {
+.CurrentWeather .current-weather-section {
   margin-top: 2rem;
   display: flex;
   align-items: center;
@@ -108,49 +111,39 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /* Temperature section */
-.temperature-container {
+.DisplayTemperature.temperature-container {
   /* Get temperature number and C/F button on the same line */
   display: flex;
 }
 
-#temperature {
+.DisplayTemperature #temperature {
   font-family: "Coda";
   font-size: 6rem;
   font-weight: 400;
 }
 
-#celsius-fahrenheit:hover, #geo-button:hover {
+.DisplayTemperature #celsius-fahrenheit:hover, #geo-button:hover {
   color: var(--alt-color);
 }
 
 /* City name, date and weather details */
-#current-city {
+.CurrentCity #current-city {
   font-family: "Coda";
   font-size: 4rem;
   margin: 0;
 }
 
-h3 {
+.CurrentDay, h3 {
   margin: 0;
 }
 
-/* Last updated */
-.date-time {
-  opacity: 45%;
-  margin-bottom: 2rem;
-}
-
-.current-date-time::before {
-  content: "Last updated: ";
-}
-
 /* Weather details */
-.details {
+.WeatherDetails.details {
   display: flex;
   flex-direction: column;
 }
 
-.details,
+.WeatherDetails .details,
 .bottom-section,
 #celsius-faiconhrenheit {
   font-family: "Titillium Web", sans-serif;
@@ -158,18 +151,24 @@ h3 {
 }
 
 /* Forecast */
-.bottom-section {
+.Forecast.bottom-section {
   display: flex;
   justify-content: space-around;
   margin: 2rem 0 1rem;
 }
 
-.weather-forecast-icon {
+.Forecast .weather-forecast-icon {
   width: 40%;
 }
 
-.forecast-text {
+.Forecast .forecast-text {
   margin-bottom: 0;
+}
+
+/* Last updated */
+.LastUpdated.date-time {
+  opacity: 45%;
+  margin-bottom: 2rem;
 }
 
 /* FOOTER */

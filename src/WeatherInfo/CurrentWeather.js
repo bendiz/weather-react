@@ -32,7 +32,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
 
   const url = `/img/weather-icons/${weatherIcon}.png`;
   return (
-    <div>
+    <div className="CurrentWeather">
       <div className="current-weather-section">
         <img src={url} alt="Weather Icon" className="weather-icon" />
         <DisplayTemperature temp={temp}/>

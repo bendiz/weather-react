@@ -22,7 +22,7 @@ function CurrentDay({ date, temp }) {
   const day = daysOfWeek[date.getDay()];
 
   return (
-    <h3 className="current-day" id="current-day">
+    <h3 className="CurrentDay">
       {temp === undefined ? "" : day}
     </h3>
   );

@@ -11,7 +11,7 @@ function CurrentCity({ city }) {
 
   city = city || "Search for a city";
   return (
-    <div className="city-section">
+    <div className="CurrentCity city-section">
       <h1 className="current-city" id="current-city">
         {city}
       </h1>

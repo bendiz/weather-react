@@ -22,7 +22,7 @@ function DisplayTemperature({temp}) {
         }
     }
 
-    return <div className="temperature-container">
+    return <div className="DisplayTemperature temperature-container">
           <link className="current-temp" />
           <h2 id="temperature">{temperature !== undefined? Math.round(temperature) : "" }</h2>
           <a href="#" id="celsius-fahrenheit" onClick={handleClick} title="convert between °F|°C">
