@@ -8,7 +8,6 @@
     - Fetch correct Icons
 
 3. Celsius to Fahrenheit
-    - Conversion for current temperature
     - Conversion for forecast temperatures
 
 4. NightMode
