@@ -5,7 +5,7 @@ import CurrentDay from "./CurrentDay";
 import WeatherDetails from "./WeatherDetails";
 import DisplayTemperature from "./DisplayTemperature";
 
-function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
+function CurrentWeather({ temp, city, icon, description, wind, humidity, date }) {
   /**
    * Displays the weather icon, current temperature (if present) and passes params to
      CurrentCity, CurrentDay and WeatherDetails.
@@ -14,6 +14,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
    * @param {Number | undefined} temp - The current temperature. Before/After user query.
    * @param {string | undefined} city - The current city. Before/After user query.
    * @param {string | undefined} icon - The current weather icon. Before/After user query.
+   * @param {string | undefined} description - The current weather description. Before/After user query
    * @param {Number | undefined} wind - The current wind speed. Before/After user query.
    * @param {Number | undefined} humidity - The current humidity level. Before/After user query.
    * @param {Object} date - The current date.
@@ -34,7 +35,7 @@ function CurrentWeather({ temp, city, icon, wind, humidity, date }) {
   return (
     <div className="CurrentWeather">
       <div className="current-weather-section">
-        <img src={url} alt="Weather Icon" className="weather-icon" />
+        <img src={url} alt={description} className="weather-icon" />
         <DisplayTemperature temp={temp}/>
       </div>
       <CurrentCity city={city} />
@@ -48,6 +49,7 @@ CurrentWeather.propTypes = {
     temp: PropTypes.number,
     city: PropTypes.string,
     icon: PropTypes.string,
+    description: PropTypes.string,
     wind: PropTypes.number,
     humidity: PropTypes.number,
     date: PropTypes.object
