@@ -5,7 +5,7 @@ import CurrentDay from "./CurrentDay";
 import WeatherDetails from "./WeatherDetails";
 import DisplayTemperature from "./DisplayTemperature";
 
-function CurrentWeather({ temp, city, icon, description, wind, humidity, date }) {
+function CurrentWeather({ temp, city, description, wind, humidity, date, iconUrl }) {
   /**
    * Displays the weather icon, current temperature (if present) and passes params to
      CurrentCity, CurrentDay and WeatherDetails.
@@ -13,25 +13,18 @@ function CurrentWeather({ temp, city, icon, description, wind, humidity, date })
      All params passed from Search.
    * @param {Number | undefined} temp - The current temperature. Before/After user query.
    * @param {string | undefined} city - The current city. Before/After user query.
-   * @param {string | undefined} icon - The current weather icon. Before/After user query.
    * @param {string | undefined} description - The current weather description. Before/After user query
    * @param {Number | undefined} wind - The current wind speed. Before/After user query.
    * @param {Number | undefined} humidity - The current humidity level. Before/After user query.
    * @param {Object} date - The current date.
+   * @param {string | undefined} iconUrl - The URL to the weather icon corresponding to the current weather. Before/after user query.
    * 
    * @returns {JSX.Element} - Returns the JSX representation. Includes weather icon if it exists (or placeholder), and 
      current temperature if it exists or a placeholder string if not.
    */
 
   //  Choose a default icon before user search
-  let weatherIcon = icon || "01d";
-
-  // Prevents night icons for now
-  if (weatherIcon.includes("n")) {
-    weatherIcon = weatherIcon.substr(0, 2) + "d";
-  }
-
-  const url = `/img/weather-icons/${weatherIcon}.png`;
+  const url = iconUrl || "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png";
   return (
     <div className="CurrentWeather">
       <div className="current-weather-section">
@@ -48,11 +41,11 @@ function CurrentWeather({ temp, city, icon, description, wind, humidity, date })
 CurrentWeather.propTypes = {
     temp: PropTypes.number,
     city: PropTypes.string,
-    icon: PropTypes.string,
     description: PropTypes.string,
     wind: PropTypes.number,
     humidity: PropTypes.number,
-    date: PropTypes.object
+    date: PropTypes.object,
+    iconUrl: PropTypes.string
   };
 
 export default CurrentWeather;

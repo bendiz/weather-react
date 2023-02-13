@@ -7,7 +7,7 @@ import Forecast from "../WeatherInfo/Forecast";
 import LastUpdated from "../WeatherInfo/LastUpdated";
 
 function Search() {
-  const apiKey = "035283d2ed3751237392ce4250953768";
+  const apiKey = "ba1505034543c95143f951obc63t6cd4";
   const units = "metric";
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
@@ -18,12 +18,12 @@ function handleApiRequest(latitude, longitude) {
   let apiUrl;
 
   if (city && city.length > 0) {
-    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
     // Allows the user to make a 2nd query with location request when search field is not empty
     setCity("")
   } else if (latitude && longitude && !city) {
-    apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+    apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
   }
 
@@ -38,18 +38,19 @@ function handleApiRequest(latitude, longitude) {
   }
 
   function handleResponse(response) {
+    console.log(response.data)
     setWeatherMessage({
-      temperature: response.data.main.temp,
-      city: response.data.name,
-      icon: response.data.weather[0].icon,
-      description: response.data.weather[0].description,
+      temperature: response.data.temperature.current,
+      city: response.data.city,
+      icon: response.data.condition.icon,
+      iconUrl: response.data.condition.icon_url,
+      description: response.data.condition.description,
       wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      lat: response.data.coord.lat,
-      lon: response.data.coord.lon
+      humidity: response.data.temperature.humidity,
+      lat: response.data.coordinates.latitude,
+      lon: response.data.coordinates.longitude
     })
     setLoading(false);
-    console.log(response.data)
   }
 
   function updateCity(event) {
@@ -59,7 +60,8 @@ function handleApiRequest(latitude, longitude) {
 
 
   // Displays an error message for the user if the city does not exist in API
-  function handleError() {
+  function handleError(error) {
+    console.log(error)
     alert("Invalid name! Please enter a valid city name");
   }
 
@@ -93,12 +95,13 @@ function handleApiRequest(latitude, longitude) {
         temp={weatherMessage.temperature}
         city={weatherMessage.city}
         icon={weatherMessage.icon}
+        iconUrl={weatherMessage.iconUrl}
         description={weatherMessage.description}
         wind={weatherMessage.wind}
         humidity={weatherMessage.humidity}
         date={date}
       />
-      <Forecast city={weatherMessage.city} date={date} lat={weatherMessage.lat} lon={weatherMessage.lon} units={units} apiKey={apiKey}/>
+      <Forecast city={weatherMessage.city} date={date} lat={weatherMessage.lat} lon={weatherMessage.lon} units={units} apiKey={apiKey} iconUrl={weatherMessage.iconUrl} description={weatherMessage.description}/>
       <LastUpdated date={date} />
     </div>
   );
