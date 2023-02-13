@@ -20,15 +20,14 @@ function handleApiRequest(latitude, longitude) {
   if (city && city.length > 0) {
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
-  } else if (latitude && longitude) {
+    // Allows the user to make a 2nd query with location request when search field is not empty
+    setCity("")
+  } else if (latitude && longitude && !city) {
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
-
   }
 
 }
-
-
   function handleGeoLocation(latitude, longitude) {
     handleApiRequest(latitude, longitude);
   }
