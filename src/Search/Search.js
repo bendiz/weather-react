@@ -12,19 +12,21 @@ function Search() {
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
   const [loading, setLoading] = useState(false);
-  const [userInput, setUserInput] = useState(null);
   const date = new Date();
 
-  function handleApiRequest(latitude, longitude) {
-    let apiUrl;
-    if (latitude && longitude && !userInput) {
-        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-        axios.get(apiUrl).then(handleResponse).catch(handleError);
-  } else if (latitude && longitude || userInput) {
+function handleApiRequest(latitude, longitude) {
+  let apiUrl;
+
+  if (city && city.length > 0) {
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
+  } else if (latitude && longitude) {
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(handleResponse).catch(handleError);
+
   }
-  }
+
+}
 
 
   function handleGeoLocation(latitude, longitude) {
@@ -53,7 +55,6 @@ function Search() {
 
   function updateCity(event) {
     setCity(event.target.value);
-    setUserInput(true);
     setLoading(true);
   }
 
