@@ -55,7 +55,7 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
 }
  Forecast.propTypes = {
     city: PropTypes.string,
-    date: PropTypes.object,
+    date: PropTypes.number,
     lat: PropTypes.number,
     lon: PropTypes.number,
     units: PropTypes.string,

@@ -38,10 +38,10 @@ function handleApiRequest(latitude, longitude) {
   }
 
   function handleResponse(response) {
-    console.log(response.data)
     setWeatherMessage({
       temperature: response.data.temperature.current,
       city: response.data.city,
+      date: new Date(response.data.time * 1000),
       icon: response.data.condition.icon,
       iconUrl: response.data.condition.icon_url,
       description: response.data.condition.description,
@@ -99,9 +99,9 @@ function handleApiRequest(latitude, longitude) {
         description={weatherMessage.description}
         wind={weatherMessage.wind}
         humidity={weatherMessage.humidity}
-        date={date}
+        date={weatherMessage.date}
       />
-      <Forecast city={weatherMessage.city} date={date} lat={weatherMessage.lat} lon={weatherMessage.lon} units={units} apiKey={apiKey} iconUrl={weatherMessage.iconUrl} description={weatherMessage.description}/>
+      <Forecast city={weatherMessage.city} date={weatherMessage.date} lat={weatherMessage.lat} lon={weatherMessage.lon} units={units} apiKey={apiKey} iconUrl={weatherMessage.iconUrl} description={weatherMessage.description}/>
       <LastUpdated date={date} />
     </div>
   );

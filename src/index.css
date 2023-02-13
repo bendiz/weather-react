@@ -107,7 +107,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* Temperature section */
@@ -140,7 +140,16 @@ input[type="search"]::-webkit-search-results-decoration {
 /* Weather details */
 .WeatherDetails.details {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-basis: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  opacity: 60%;
+}
+
+.CurrentDay .CurrentTime {
+  margin: 0;
 }
 
 .WeatherDetails .details,
@@ -154,7 +163,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .Forecast.bottom-section {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 0 1rem;
+  margin: 3rem 0 1rem;
 }
 
 .Forecast .weather-forecast-icon {
@@ -207,7 +216,7 @@ footer > a:hover {
     width: 90%;
   }
   #current-city {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   body {
     background-size: 550%;
@@ -238,8 +247,8 @@ footer > a:hover {
   #search-form {
     font-size: 1.5rem;
   }
-  #temperature {
-    font-size: 4rem;
+  .DisplayTemperature #temperature {
+    font-size: 3rem;
   }
   .current-weather-section {
     flex-direction: column;
@@ -250,11 +259,11 @@ footer > a:hover {
     width: 30%;
   }
 
-  #current-city {
-    font-size: 3rem;
+  .CurrentCity #current-city {
+    font-size: 2rem;
   }
-  .details {
-    font-size: 1.5rem;
+  .WeatherDetails.details {
+    font-size: 1.2rem;
   }
   .forecast-text {
     font-size: 1.3rem;
@@ -281,7 +290,7 @@ footer > a:hover {
     width: 20%;
   }
 
-  #current-city {
+  .CurrentCity #current-city {
     font-size: 3rem;
   }
 

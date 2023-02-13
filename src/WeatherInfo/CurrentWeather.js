@@ -30,10 +30,10 @@ function CurrentWeather({ temp, city, description, wind, humidity, date, iconUrl
       <div className="current-weather-section">
         <img src={url} alt={description} className="weather-icon" />
         <DisplayTemperature temp={temp}/>
+        <WeatherDetails wind={wind} humidity={humidity} />
       </div>
       <CurrentCity city={city} />
-      <CurrentDay date={date} temp={temp} />
-      <WeatherDetails wind={wind} humidity={humidity} />
+      <CurrentDay date={date}/>
     </div>
   );
 }
@@ -44,7 +44,10 @@ CurrentWeather.propTypes = {
     description: PropTypes.string,
     wind: PropTypes.number,
     humidity: PropTypes.number,
-    date: PropTypes.object,
+    date: PropTypes.oneOfType([
+      PropTypes.null,
+      PropTypes.number
+    ]),
     iconUrl: PropTypes.string
   };
 
