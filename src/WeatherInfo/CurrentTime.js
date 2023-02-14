@@ -70,7 +70,7 @@ function CurrentTime({ date }) {
   }
 }
 
-CurrentDay.propTypes = {
+CurrentTime.propTypes = {
   date: PropTypes.number,
 };
 
