@@ -19,15 +19,11 @@ function CurrentTime({ date }) {
     "Saturday",
   ];
 
-  let day;
-  let hours;
-  let minutes;
-
   if (date !== undefined) {
-    day = daysOfWeek[date.getDay()];
-    hours = date.getHours();
-    minutes = date.getMinutes();
+    const day = daysOfWeek[date.getDay()];
     const prefix = 0;
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
 
     function time() {
       /**
