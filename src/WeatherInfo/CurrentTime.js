@@ -25,7 +25,7 @@ function CurrentDay({ date }) {
 
   if (date !== undefined) {
     day = daysOfWeek[date.getDay()];
-    hours = date.getHours();
+    hours = 24;
     minutes = date.getMinutes();
     const prefix = 0;
 
@@ -44,7 +44,10 @@ function CurrentDay({ date }) {
       } else if (hours === 12) {
         hours = hours = `0${hours}`;
         minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
-      } else if (hours > 12 && hours < 24) {
+      } else if (hours > 12 && hours < 22) {
+        hours = hours = `0${hours - 12}`;
+        minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
+      } else if (hours >= 22 && hours < 24) {
         hours = hours = `${hours - 12}`;
         minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
       } else if (hours === 24) {
