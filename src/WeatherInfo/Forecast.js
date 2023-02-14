@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description }) {
-// In progress
+function Forecast({ info }) {
+  // In progress
   return (
     <div className="Forecast bottom-section">
       <div className="weather-forecast-one">
         <p className="forecast-text">2°C</p>
         <img
-          src={iconUrl}
-          alt={description}
+          src={info.iconUrl}
+          alt={info.description}
           className="weather-forecast-icon"
         />
         <p className="forecast-text">Sun</p>
@@ -17,8 +17,8 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
       <div className="weather-forecast-two">
         <p className="forecast-text">5°C</p>
         <img
-          src={iconUrl}
-          alt={description}
+          src={info.iconUrl}
+          alt={info.description}
           className="weather-forecast-icon"
         />
         <p className="forecast-text">Mon</p>
@@ -26,8 +26,8 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
       <div className="weather-forecast-three">
         <p className="forecast-text">6°C</p>
         <img
-          src={iconUrl}
-          alt={description}
+          src={info.iconUrl}
+          alt={info.description}
           className="weather-forecast-icon"
         />
         <p className="forecast-text">Tue</p>
@@ -35,8 +35,8 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
       <div className="weather-forecast-four">
         <p className="forecast-text">7°C</p>
         <img
-          src={iconUrl}
-          alt={description}
+          src={info.iconUrl}
+          alt={info.description}
           className="weather-forecast-icon"
         />
         <p className="forecast-text">Wed</p>
@@ -44,8 +44,8 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
       <div className="weather-forecast-five">
         <p className="forecast-text">4°C</p>
         <img
-          src={iconUrl}
-          alt={description}
+          src={info.iconUrl}
+          alt={info.description}
           className="weather-forecast-icon"
         />
         <p className="forecast-text">Thu</p>
@@ -53,15 +53,8 @@ function Forecast({ city, date, lat, lon, units, apiKey, iconUrl, description })
     </div>
   );
 }
- Forecast.propTypes = {
-    city: PropTypes.string,
-    date: PropTypes.number,
-    lat: PropTypes.number,
-    lon: PropTypes.number,
-    units: PropTypes.string,
-    apiKey: PropTypes.string,
-    iconUrl: PropTypes.string,
-    description: PropTypes.string
-  };
+Forecast.propTypes = {
+  info: PropTypes.object.isRequired,
+};
 
 export default Forecast;

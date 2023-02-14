@@ -118,11 +118,12 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .DisplayTemperature #temperature {
   font-family: "Coda";
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: 400;
 }
 
-.DisplayTemperature #celsius-fahrenheit:hover, #geo-button:hover {
+.DisplayTemperature #celsius-fahrenheit:hover,
+#geo-button:hover {
   color: var(--alt-color);
 }
 
@@ -130,11 +131,6 @@ input[type="search"]::-webkit-search-results-decoration {
 .CurrentCity #current-city {
   font-family: "Coda";
   font-size: 4rem;
-  margin: 0;
-}
-
-.CurrentDay, h3 {
-  margin: 0;
 }
 
 /* Weather details */
@@ -143,13 +139,9 @@ input[type="search"]::-webkit-search-results-decoration {
   justify-content: center;
   gap: 1.5rem;
   flex-basis: 100%;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
   opacity: 60%;
-}
-
-.CurrentDay .CurrentTime {
-  margin: 0;
 }
 
 .WeatherDetails .details,
@@ -163,7 +155,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .Forecast.bottom-section {
   display: flex;
   justify-content: space-around;
-  margin: 3rem 0 1rem;
+  margin: 2rem 0 1rem;
 }
 
 .Forecast .weather-forecast-icon {
@@ -180,6 +172,13 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-bottom: 2rem;
 }
 
+/* Current Day */
+
+.CurrentDay .dayAndTime {
+  font-size: 1.5rem;
+  opacity: 60%;
+}
+
 /* FOOTER */
 
 footer {
@@ -192,7 +191,7 @@ footer {
 
 footer > a {
   font-size: 0.8rem;
-  font-family:monospace;
+  font-family: monospace;
   text-decoration: none;
   color: rgba(253, 253, 253, 0.629);
 }
@@ -252,7 +251,6 @@ footer > a:hover {
   }
   .current-weather-section {
     flex-direction: column;
-    gap: 0;
   }
 
   img.weather-icon {
@@ -283,7 +281,6 @@ footer > a:hover {
   }
   .current-weather-section {
     flex-direction: column;
-    gap: 0;
   }
 
   img.weather-icon {
@@ -314,7 +311,6 @@ footer > a:hover {
   }
   .current-weather-section {
     flex-direction: row;
-    gap: 1rem;
   }
   #current-city {
     font-size: 3.5rem;

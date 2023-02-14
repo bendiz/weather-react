@@ -14,27 +14,26 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const date = new Date();
 
-function handleApiRequest(latitude, longitude) {
-  let apiUrl;
+  function handleApiRequest(latitude, longitude) {
+    let apiUrl;
 
-  if (city && city.length > 0) {
-    apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(handleResponse).catch(handleError);
-    // Allows the user to make a 2nd query with location request when search field is not empty
-    setCity("")
-  } else if (latitude && longitude && !city) {
-    apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(handleResponse).catch(handleError);
+    if (city && city.length > 0) {
+      apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+      axios.get(apiUrl).then(handleResponse).catch(handleError);
+      // Allows the user to make a 2nd query with location request when search field is not empty
+      setCity("");
+    } else if (latitude && longitude && !city) {
+      apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
+      axios.get(apiUrl).then(handleResponse).catch(handleError);
+    }
   }
-
-}
   function handleGeoLocation(latitude, longitude) {
     handleApiRequest(latitude, longitude);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    handleApiRequest()
+    handleApiRequest();
   }
 
   function handleResponse(response) {
@@ -48,8 +47,8 @@ function handleApiRequest(latitude, longitude) {
       wind: response.data.wind.speed,
       humidity: response.data.temperature.humidity,
       lat: response.data.coordinates.latitude,
-      lon: response.data.coordinates.longitude
-    })
+      lon: response.data.coordinates.longitude,
+    });
     setLoading(false);
   }
 
@@ -58,10 +57,9 @@ function handleApiRequest(latitude, longitude) {
     setLoading(true);
   }
 
-
   // Displays an error message for the user if the city does not exist in API
   function handleError(error) {
-    console.log(error)
+    console.log(error);
     alert("Invalid name! Please enter a valid city name");
   }
 
@@ -77,9 +75,12 @@ function handleApiRequest(latitude, longitude) {
           minLength="2"
           onChange={updateCity}
         />
-        <Location onGeoLocation={handleGeoLocation} Location={[weatherMessage.lat, weatherMessage.lon]} />
+        <Location
+          onGeoLocation={handleGeoLocation}
+          Location={[weatherMessage.lat, weatherMessage.lon]}
+        />
       </form>
-      {loading && city.length > 0? (
+      {loading && city.length > 0 ? (
         <BeatLoader
           color="#306974"
           loading={loading}
@@ -91,17 +92,8 @@ function handleApiRequest(latitude, longitude) {
       ) : (
         ""
       )}
-      <CurrentWeather
-        temp={weatherMessage.temperature}
-        city={weatherMessage.city}
-        icon={weatherMessage.icon}
-        iconUrl={weatherMessage.iconUrl}
-        description={weatherMessage.description}
-        wind={weatherMessage.wind}
-        humidity={weatherMessage.humidity}
-        date={weatherMessage.date}
-      />
-      <Forecast city={weatherMessage.city} date={weatherMessage.date} lat={weatherMessage.lat} lon={weatherMessage.lon} units={units} apiKey={apiKey} iconUrl={weatherMessage.iconUrl} description={weatherMessage.description}/>
+      <CurrentWeather info={weatherMessage} />
+      <Forecast info={weatherMessage} />
       <LastUpdated date={date} />
     </div>
   );

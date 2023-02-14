@@ -12,7 +12,7 @@ function CurrentCity({ city }) {
   city = city || "Search for a city";
   return (
     <div className="CurrentCity city-section">
-      <h1 className="current-city" id="current-city">
+      <h1 className="current-city mb-0" id="current-city">
         {city}
       </h1>
     </div>
@@ -20,7 +20,7 @@ function CurrentCity({ city }) {
 }
 
 CurrentCity.propTypes = {
-    city: PropTypes.string,
-  };
+  city: PropTypes.string,
+};
 
 export default CurrentCity;

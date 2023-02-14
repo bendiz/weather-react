@@ -16,8 +16,8 @@
     - Grey card
     - Dark Background
 
-5. Last updated
-    - Only update time when user has submitted form or used location.
+5. Date
+    - Show AM/PM
 
 6. User input
     - Stop the API from making 2 calls
