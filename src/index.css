@@ -139,8 +139,7 @@ input[type="search"]::-webkit-search-results-decoration {
   justify-content: center;
   gap: 1.5rem;
   flex-basis: 100%;
-  font-size: 1rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
   opacity: 60%;
 }
 
@@ -155,7 +154,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .Forecast.bottom-section {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 0 1rem;
+  margin: 2rem 0;
 }
 
 .Forecast .weather-forecast-icon {
@@ -174,7 +173,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /* Current Day */
 
-.CurrentDay .dayAndTime {
+.CurrentTime .dayAndTime {
   font-size: 1.5rem;
   opacity: 60%;
 }
@@ -249,9 +248,6 @@ footer > a:hover {
   .DisplayTemperature #temperature {
     font-size: 3rem;
   }
-  .current-weather-section {
-    flex-direction: column;
-  }
 
   img.weather-icon {
     width: 30%;
@@ -278,9 +274,6 @@ footer > a:hover {
   }
   .container {
     width: 90%;
-  }
-  .current-weather-section {
-    flex-direction: column;
   }
 
   img.weather-icon {

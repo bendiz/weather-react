@@ -4,7 +4,6 @@ import BeatLoader from "react-spinners/BeatLoader";
 import Location from "./Location";
 import CurrentWeather from "../WeatherInfo/CurrentWeather";
 import Forecast from "../WeatherInfo/Forecast";
-import LastUpdated from "../WeatherInfo/LastUpdated";
 
 function Search() {
   const apiKey = "ba1505034543c95143f951obc63t6cd4";
@@ -12,7 +11,6 @@ function Search() {
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
   const [loading, setLoading] = useState(false);
-  const date = new Date();
 
   function handleApiRequest(latitude, longitude) {
     let apiUrl;
@@ -94,7 +92,6 @@ function Search() {
       )}
       <CurrentWeather info={weatherMessage} />
       <Forecast info={weatherMessage} />
-      <LastUpdated date={date} />
     </div>
   );
 }

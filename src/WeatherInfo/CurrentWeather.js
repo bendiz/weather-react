@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CurrentCity from "./CurrentCity";
-import CurrentDay from "./CurrentDay";
+import CurrentTime from "./CurrentTime";
 import WeatherDetails from "./WeatherDetails";
 import DisplayTemperature from "./DisplayTemperature";
 
@@ -27,7 +27,7 @@ function CurrentWeather({ info }) {
         <WeatherDetails wind={info.wind} humidity={info.humidity} />
       </div>
       <CurrentCity city={info.city} />
-      <CurrentDay date={info.date} />
+      <CurrentTime date={info.date} />
     </div>
   );
 }
