@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function CurrentDay({ date }) {
+function CurrentTime({ date }) {
   /**
    * Finds day of the week and displays it on the weather card
    *
@@ -25,7 +25,7 @@ function CurrentDay({ date }) {
 
   if (date !== undefined) {
     day = daysOfWeek[date.getDay()];
-    hours = 24;
+    hours = date.getHours();
     minutes = date.getMinutes();
     const prefix = 0;
 
@@ -74,4 +74,4 @@ CurrentDay.propTypes = {
   date: PropTypes.number,
 };
 
-export default CurrentDay;
+export default CurrentTime;
