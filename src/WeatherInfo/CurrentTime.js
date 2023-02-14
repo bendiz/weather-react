@@ -30,6 +30,12 @@ function CurrentDay({ date }) {
     const prefix = 0;
 
     function time() {
+      /**
+       * This function updates the existing variables (hours) and (minutes)
+       * Defines wether the current time is AM/PM and adds a 0 in front of hours/minutes when it's missing.
+       *
+       * @returns {void}
+       */
       if (hours < 10) {
         hours = `0${hours}`;
         minutes = `${minutes < 10 ? prefix : ""}${minutes}AM`;
