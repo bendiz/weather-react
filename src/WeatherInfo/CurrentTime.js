@@ -1,29 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Forecast from "./Forecast";
 
-function CurrentTime({ date }) {
+function CurrentTime({ info, forecast }) {
   /**
    * Finds day of the week and displays it on the weather card
    *
-   * @param {Object} date - The current date - Passed from CurrentWeather.
+   * @param {Object} info - The current date - Passed from CurrentWeather.
    * @returns {JSX.Element} - Checks if the temp is placeholder or real temperature and displays the day
    */
 
   const daysOfWeek = [
-    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
   ];
 
-  if (date !== undefined) {
-    const day = daysOfWeek[date.getDay()];
+  if (info.date !== undefined) {
+    const day = daysOfWeek[info.date.getDay() - 1];
     const prefix = 0;
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
+    let hours = info.date.getHours();
+    let minutes = info.date.getMinutes();
 
     function time() {
       /**
@@ -53,13 +54,14 @@ function CurrentTime({ date }) {
     }
     time();
 
-    if (date !== undefined) {
+    if (info.date !== undefined) {
       return (
         <div className="CurrentTime">
           <h3 className="mb-0">{day}</h3>
           <p className="mb-0 dayAndTime">
             {hours}:{minutes}
           </p>
+          <Forecast info={info} forecast={forecast} daysOfWeek={daysOfWeek} />
         </div>
       );
     }
@@ -67,7 +69,8 @@ function CurrentTime({ date }) {
 }
 
 CurrentTime.propTypes = {
-  date: PropTypes.number,
+  info: PropTypes.object,
+  forecast: PropTypes.array,
 };
 
 export default CurrentTime;
