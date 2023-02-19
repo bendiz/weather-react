@@ -18,7 +18,6 @@ function Forecast({ info, forecast, daysOfWeek }) {
       }
     }
   }
-  console.log(daysOfWeek[list[0]]);
 
   if (forecast[0] !== undefined) {
     return (
@@ -32,7 +31,7 @@ function Forecast({ info, forecast, daysOfWeek }) {
             alt={description}
             className="weather-forecast-icon"
           />
-          <p className="forecast-text"></p>
+          <p className="forecast-text">{daysOfWeek[list[0]].slice(0, 3)}</p>
         </div>
         <div className="weather-forecast-two">
           <p className="forecast-text">
@@ -43,7 +42,7 @@ function Forecast({ info, forecast, daysOfWeek }) {
             alt={description}
             className="weather-forecast-icon"
           />
-          <p className="forecast-text"></p>
+          <p className="forecast-text">{daysOfWeek[list[1]].slice(0, 3)}</p>
         </div>
         <div className="weather-forecast-three">
           <p className="forecast-text">
@@ -54,7 +53,7 @@ function Forecast({ info, forecast, daysOfWeek }) {
             alt={description}
             className="weather-forecast-icon"
           />
-          <p className="forecast-text"></p>
+          <p className="forecast-text">{daysOfWeek[list[2]].slice(0, 3)}</p>
         </div>
         <div className="weather-forecast-four">
           <p className="forecast-text">
@@ -65,7 +64,7 @@ function Forecast({ info, forecast, daysOfWeek }) {
             alt={description}
             className="weather-forecast-icon"
           />
-          <p className="forecast-text"></p>
+          <p className="forecast-text">{daysOfWeek[list[3]].slice(0, 3)}</p>
         </div>
         <div className="weather-forecast-five">
           <p className="forecast-text">
@@ -76,7 +75,7 @@ function Forecast({ info, forecast, daysOfWeek }) {
             alt={description}
             className="weather-forecast-icon"
           />
-          <p className="forecast-text"></p>
+          <p className="forecast-text">{daysOfWeek[list[4]].slice(0, 3)}</p>
         </div>
       </div>
     );

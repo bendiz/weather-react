@@ -6,6 +6,7 @@
     - Fetch correct days relative to current day
     - Fetch correct temperature
     - Fetch correct Icons
+    - Implement C/F conversion
     while list.length < 5 {
     day++
     append to list
