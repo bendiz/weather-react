@@ -101,10 +101,14 @@ function Search() {
           minLength="2"
           onChange={updateCity}
         />
-        <Location
-          onGeoLocation={handleGeoLocation}
-          Location={[weatherMessage.lat, weatherMessage.lon]}
-        />
+        <button
+          className="Location"
+          id="geo-button"
+          type="button"
+          onClick={handleClick}
+        >
+          <i className="fa-solid fa-location-dot"></i>
+        </button>
       </form>
       {loading && city.length > 0 ? (
         <BeatLoader
