@@ -16,9 +16,7 @@ function CurrentWeather({ info, forecast }) {
 
   //  Choose a default icon before user search
   const temp = info.temperature;
-  const url =
-    info.iconUrl ||
-    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png";
+  const url = info.iconUrl;
   const [unit, setUnit] = useState(`°C`);
   const [temperature, setTemperature] = useState(temp);
   useEffect(() => {

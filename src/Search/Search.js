@@ -1,21 +1,27 @@
 import { React, useState } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
-import Location from "./Location";
+// import Location from "./Location";
 import CurrentWeather from "../WeatherInfo/CurrentWeather";
 
 function Search() {
   const apiKey = "ba1505034543c95143f951obc63t6cd4";
   const units = "metric";
-  const [fetchedWeather, setFetchedWeather] = useState(false);
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
+  const [queried, setQueried] = useState(false);
+  const options = {
+    maximumAge: Infinity,
+    timeout: Infinity,
+    enableHighAccuracy: false,
+  };
 
-  if (!fetchedWeather) {
-    let apiUrl = "";
-    apiUrl = `https://api.shecodes.io/weather/v1/current?query=Kristiansund&key=${apiKey}&units=${units}`;
+  if (!queried && weatherMessage.lat !== Number) {
+    setQueried(true);
+    let apiUrl;
+    apiUrl = `https://api.shecodes.io/weather/v1/current?query=Kristiansand&key=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(handleResponse).catch(handleError);
   }
 
@@ -25,7 +31,7 @@ function Search() {
       apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
       // Allows the user to make a 2nd query with location request when search field is not empty
       setCity("");
-    } else if (latitude && longitude && !city) {
+    } else if (latitude && longitude) {
       apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
     }
     axios.get(apiUrl).then(handleResponse).catch(handleError);
@@ -40,8 +46,25 @@ function Search() {
   function handleForecastResponse(response) {
     setForecast(response.data.daily);
   }
-  function handleGeoLocation(latitude, longitude) {
+
+  function handleClick(event) {
+    console.log("HEY");
+    navigator.geolocation.getCurrentPosition(
+      successCallback,
+      errorCallback,
+      options
+    );
+  }
+
+  function successCallback(position) {
+    console.log(position.coords);
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
     handleApiRequest(latitude, longitude);
+  }
+
+  function errorCallback(error) {
+    console.log(error);
   }
 
   function handleSubmit(event) {
@@ -50,6 +73,7 @@ function Search() {
   }
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherMessage({
       temperature: response.data.temperature.current,
       city: response.data.city,
@@ -64,11 +88,6 @@ function Search() {
     });
     setLoading(false);
     callForecastAPI(response);
-    console.log(
-      response.data.coordinates.latitude,
-      response.data.coordinates.longitude
-    );
-    setFetchedWeather(true);
   }
 
   function updateCity(event) {
@@ -79,7 +98,6 @@ function Search() {
   // Displays an error message for the user if the city does not exist in API
   function handleError(error) {
     console.log(error);
-    alert("Invalid name! Please enter a valid city name");
   }
 
   return (
@@ -94,10 +112,14 @@ function Search() {
           minLength="2"
           onChange={updateCity}
         />
-        <Location
-          onGeoLocation={handleGeoLocation}
-          Location={[weatherMessage.lat, weatherMessage.lon]}
-        />
+        <button
+          className="Location"
+          id="geo-button"
+          type="button"
+          onClick={handleClick}
+        >
+          <i className="fa-solid fa-location-dot"></i>
+        </button>
       </form>
       {loading && city.length > 0 ? (
         <BeatLoader

@@ -1,24 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+// import React from "react";
+// import PropTypes from "prop-types";
 
-function Location({ onGeoLocation }) {
-  function handleClick(event) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      onGeoLocation(latitude, longitude);
-    });
-  }
+// function Location({ onGeoLocation }) {
 
-  return (
-    <button className="Location" id="geo-button" onClick={handleClick}>
-      <i className="fa-solid fa-location-dot"></i>
-    </button>
-  );
-}
+//   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-Location.propTypes = {
-  onGeoLocation: PropTypes.func.isRequired,
-};
+//   return (
 
-export default Location;
+//   );
+// }
+
+// Location.propTypes = {
+//   onGeoLocation: PropTypes.func.isRequired,
+// };
+
+// export default Location;
