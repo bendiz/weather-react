@@ -2,13 +2,13 @@ import { React, useState } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 import CurrentWeather from "../WeatherInfo/CurrentWeather";
-import Forecast from "../WeatherInfo/Forecast";
 
 function Search() {
   const apiKey = "ba1505034543c95143f951obc63t6cd4";
   const units = "metric";
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
+  const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
   const [queried, setQueried] = useState(false);
 
@@ -27,7 +27,7 @@ function Search() {
   }
 
   function handleApiRequest(latitude, longitude) {
-    let apiUrl;
+    let apiUrl = "";
 
     if (city && city.length > 0) {
       apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
@@ -39,6 +39,15 @@ function Search() {
       axios.get(apiUrl).then(handleResponse).catch(handleError);
     }
   }
+
+  function callForecastAPI(response) {
+    axios
+      .get(
+        `https://api.shecodes.io/weather/v1/forecast?lon=${response.data.coordinates.longitude}&lat=${response.data.coordinates.latitude}&key=${apiKey}&units=${units}`
+      )
+      .then(handleForecastResponse);
+  }
+
   function handleForecastResponse(response) {
     setForecast(response.data.daily);
   }
@@ -55,6 +64,10 @@ function Search() {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     handleApiRequest(latitude, longitude);
+  }
+
+  function errorCallback(error) {
+    console.log(error);
   }
 
   function handleSubmit(event) {
@@ -76,6 +89,7 @@ function Search() {
       lon: response.data.coordinates.longitude,
     });
     setLoading(false);
+    callForecastAPI(response);
   }
 
   function updateCity(event) {
@@ -86,7 +100,6 @@ function Search() {
   // Displays an error message for the user if the city does not exist in API
   function handleError(error) {
     console.log(error);
-    alert("Invalid name! Please enter a valid city name");
   }
 
   return (
@@ -122,8 +135,7 @@ function Search() {
       ) : (
         ""
       )}
-      <CurrentWeather info={weatherMessage} />
-      <Forecast info={weatherMessage} />
+      <CurrentWeather info={weatherMessage} forecast={forecast} />
     </div>
   );
 }
