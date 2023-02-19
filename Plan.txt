@@ -1,23 +1,8 @@
-1. Geo Button
-    - Find better solution for placement inside search bar.
-    - Display message when user clicks button but has disabled location services
-    
-2. Forecast
-    - Fetch correct days relative to current day
-    - Fetch correct temperature
-    - Fetch correct Icons
-
-3. Celsius to Fahrenheit
-    - Conversion for forecast temperatures
-
 4. NightMode
  - Check if icon name includes "n"
     - Dark icons
     - Grey card
     - Dark Background
-
-5. Date
-    - Show AM/PM
 
 6. User input
     - Stop the API from making 2 calls

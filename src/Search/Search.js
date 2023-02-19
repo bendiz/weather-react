@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
-import Location from "./Location";
 import CurrentWeather from "../WeatherInfo/CurrentWeather";
 import Forecast from "../WeatherInfo/Forecast";
 
@@ -11,6 +10,21 @@ function Search() {
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
   const [loading, setLoading] = useState(false);
+  const [queried, setQueried] = useState(false);
+
+  // Options for GeoLocation
+  const options = {
+    maximumAge: Infinity,
+    timeout: Infinity,
+    enableHighAccuracy: false,
+  };
+  // Sets default city when user opens the weather app
+  if (!queried && weatherMessage.lat === undefined) {
+    let apiUrl = "";
+    apiUrl = `https://api.shecodes.io/weather/v1/current?query=London&key=${apiKey}&units=${units}`;
+    setQueried(true);
+    axios.get(apiUrl).then(handleResponse).catch(handleError);
+  }
 
   function handleApiRequest(latitude, longitude) {
     let apiUrl;
@@ -25,7 +39,21 @@ function Search() {
       axios.get(apiUrl).then(handleResponse).catch(handleError);
     }
   }
-  function handleGeoLocation(latitude, longitude) {
+  function handleForecastResponse(response) {
+    setForecast(response.data.daily);
+  }
+
+  function handleClick(event) {
+    navigator.geolocation.getCurrentPosition(
+      successCallback,
+      errorCallback,
+      options
+    );
+  }
+
+  function successCallback(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
     handleApiRequest(latitude, longitude);
   }
 
