@@ -7,14 +7,20 @@ import CurrentWeather from "../WeatherInfo/CurrentWeather";
 function Search() {
   const apiKey = "ba1505034543c95143f951obc63t6cd4";
   const units = "metric";
+  const [fetchedWeather, setFetchedWeather] = useState(false);
   const [city, setCity] = useState("");
   const [weatherMessage, setWeatherMessage] = useState({});
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
 
-  function handleApiRequest(latitude, longitude) {
-    let apiUrl;
+  if (!fetchedWeather) {
+    let apiUrl = "";
+    apiUrl = `https://api.shecodes.io/weather/v1/current?query=Kristiansund&key=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(handleResponse).catch(handleError);
+  }
 
+  function handleApiRequest(latitude, longitude) {
+    let apiUrl = "";
     if (city && city.length > 0) {
       apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
       // Allows the user to make a 2nd query with location request when search field is not empty
@@ -58,6 +64,11 @@ function Search() {
     });
     setLoading(false);
     callForecastAPI(response);
+    console.log(
+      response.data.coordinates.latitude,
+      response.data.coordinates.longitude
+    );
+    setFetchedWeather(true);
   }
 
   function updateCity(event) {

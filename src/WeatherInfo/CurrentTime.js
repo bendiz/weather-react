@@ -21,7 +21,6 @@ function CurrentTime({ info, forecast, metric }) {
   ];
 
   if (info.date !== undefined) {
-    const day = daysOfWeek[info.date.getDay() - 1];
     const prefix = 0;
     let hours = info.date.getHours();
     let minutes = info.date.getMinutes();
@@ -57,7 +56,7 @@ function CurrentTime({ info, forecast, metric }) {
     if (info.date !== undefined) {
       return (
         <div className="CurrentTime">
-          <h3 className="mb-0">{day}</h3>
+          <h3 className="mb-0">Today</h3>
           <p className="mb-0 dayAndTime">
             {hours}:{minutes}
           </p>
