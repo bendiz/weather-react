@@ -9,7 +9,6 @@ function CurrentCity({ city }) {
    * @returns {JSX.Element} - Returns the JSX representation of the city name.
    */
 
-  city = city || "Search for a city";
   return (
     <div className="CurrentCity city-section">
       <h1 className="current-city mb-0" id="current-city">
