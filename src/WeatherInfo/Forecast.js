@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Forecast({ info, forecast, daysOfWeek }) {
+function Forecast({ info, forecast, daysOfWeek, metric }) {
   const list = [];
   let day;
   const description = info.description || "";
@@ -24,7 +24,10 @@ function Forecast({ info, forecast, daysOfWeek }) {
       <div className="Forecast bottom-section">
         <div className="weather-forecast-one">
           <p className="forecast-text">
-            {Math.round(forecast[list[0]].temperature.day)}°C
+            {metric.includes("C")
+              ? Math.round(forecast[list[0]].temperature.day)
+              : Math.round(forecast[list[0]].temperature.day * 1.8 + 32)}
+            {metric}
           </p>
           <img
             src={forecast[list[0]].condition.icon_url}
@@ -35,7 +38,10 @@ function Forecast({ info, forecast, daysOfWeek }) {
         </div>
         <div className="weather-forecast-two">
           <p className="forecast-text">
-            {Math.round(forecast[list[1]].temperature.day)}°C
+            {metric.includes("C")
+              ? Math.round(forecast[list[1]].temperature.day)
+              : Math.round(forecast[list[1]].temperature.day * 1.8 + 32)}
+            {metric}
           </p>
           <img
             src={forecast[list[1]].condition.icon_url}
@@ -46,7 +52,10 @@ function Forecast({ info, forecast, daysOfWeek }) {
         </div>
         <div className="weather-forecast-three">
           <p className="forecast-text">
-            {Math.round(forecast[list[2]].temperature.day)}°C
+            {metric.includes("C")
+              ? Math.round(forecast[list[2]].temperature.day)
+              : Math.round(forecast[list[2]].temperature.day * 1.8 + 32)}
+            {metric}
           </p>
           <img
             src={forecast[list[2]].condition.icon_url}
@@ -57,7 +66,10 @@ function Forecast({ info, forecast, daysOfWeek }) {
         </div>
         <div className="weather-forecast-four">
           <p className="forecast-text">
-            {Math.round(forecast[list[3]].temperature.day)}°C
+            {metric.includes("C")
+              ? Math.round(forecast[list[3]].temperature.day)
+              : Math.round(forecast[list[3]].temperature.day * 1.8 + 32)}
+            {metric}
           </p>
           <img
             src={forecast[list[3]].condition.icon_url}
@@ -68,7 +80,10 @@ function Forecast({ info, forecast, daysOfWeek }) {
         </div>
         <div className="weather-forecast-five">
           <p className="forecast-text">
-            {Math.round(forecast[list[4]].temperature.day)}°C
+            {metric.includes("C")
+              ? Math.round(forecast[list[4]].temperature.day)
+              : Math.round(forecast[list[4]].temperature.day * 1.8 + 32)}
+            {metric}
           </p>
           <img
             src={forecast[list[4]].condition.icon_url}
@@ -86,6 +101,7 @@ Forecast.propTypes = {
   info: PropTypes.object,
   forecast: PropTypes.array,
   daysOfWeek: PropTypes.array,
+  metric: PropTypes.string,
 };
 
 export default Forecast;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Forecast from "./Forecast";
 
-function CurrentTime({ info, forecast }) {
+function CurrentTime({ info, forecast, metric }) {
   /**
    * Finds day of the week and displays it on the weather card
    *
@@ -61,7 +61,12 @@ function CurrentTime({ info, forecast }) {
           <p className="mb-0 dayAndTime">
             {hours}:{minutes}
           </p>
-          <Forecast info={info} forecast={forecast} daysOfWeek={daysOfWeek} />
+          <Forecast
+            info={info}
+            forecast={forecast}
+            daysOfWeek={daysOfWeek}
+            metric={metric}
+          />
         </div>
       );
     }
@@ -71,6 +76,7 @@ function CurrentTime({ info, forecast }) {
 CurrentTime.propTypes = {
   info: PropTypes.object,
   forecast: PropTypes.array,
+  metric: PropTypes.string,
 };
 
 export default CurrentTime;

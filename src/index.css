@@ -114,6 +114,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .DisplayTemperature.temperature-container {
   /* Get temperature number and C/F button on the same line */
   display: flex;
+  justify-content: center;
 }
 
 .DisplayTemperature #temperature {
@@ -158,13 +159,17 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .Forecast .weather-forecast-icon {
-  width: 40%;
+  width: 60%;
 }
 
 .Forecast .forecast-text {
   margin-bottom: 0;
 }
 
+.forecast-text > .DisplayTemperature #temperature {
+  font-size: 1.5rem;
+  font-family: "Titillium Web", sans-serif;
+}
 /* Last updated */
 .LastUpdated.date-time {
   opacity: 45%;

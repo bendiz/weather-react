@@ -15,8 +15,8 @@ function WeatherDetails({ wind, humidity }) {
 
   function setReports(state) {
     if (state) {
-      setWindReport(`\u{224B} ${Math.round(wind)}m/s`);
-      setHumidityReport(`\u{1F322} ${Math.round(humidity)}%`);
+      setWindReport(`\u{1F4A8} ${Math.round(wind)}m/s`);
+      setHumidityReport(`\u{1F4A7} ${Math.round(humidity)}%`);
     } else {
       setWindReport(``);
       setHumidityReport(``);
@@ -27,7 +27,6 @@ function WeatherDetails({ wind, humidity }) {
     wind || humidity ? setReports(true) : setReports(false);
   }, [wind, humidity]);
 
-
   return (
     <div className="WeatherDetails details">
       <span id="wind-speed">{windReport}</span>
@@ -37,8 +36,8 @@ function WeatherDetails({ wind, humidity }) {
 }
 
 WeatherDetails.propTypes = {
-    wind: PropTypes.number,
-    humidity: PropTypes.number
-  };
+  wind: PropTypes.number,
+  humidity: PropTypes.number,
+};
 
 export default WeatherDetails;
