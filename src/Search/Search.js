@@ -125,10 +125,12 @@ function Search() {
       </form>
       {loading && city.length > 0 ? (
         <BeatLoader
+          className="loader"
           color="#306974"
           loading={loading}
-          cssOverride={false}
+          cssOverride={true}
           size={5}
+          margin={0}
           aria-label="Loading Spinner"
           data-testid="loader"
         />

@@ -66,6 +66,11 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+.loader {
+  position: absolute;
+  left: 50%;
+}
+
 /* Location */
 .Location .fa-location-dot {
   font-size: 1.3rem;
