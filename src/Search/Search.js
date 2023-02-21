@@ -101,7 +101,6 @@ function Search() {
   function handleError(error) {
     console.log(error);
   }
-
   return (
     <div className="Search">
       <form id="search-form" onSubmit={handleSubmit}>

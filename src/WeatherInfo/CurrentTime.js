@@ -74,7 +74,7 @@ function CurrentTime({ info, forecast, metric }) {
 
 CurrentTime.propTypes = {
   info: PropTypes.object,
-  forecast: PropTypes.array,
+  forecast: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   metric: PropTypes.string,
 };
 

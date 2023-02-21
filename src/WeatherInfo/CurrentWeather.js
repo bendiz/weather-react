@@ -65,7 +65,7 @@ function CurrentWeather({ info, forecast }) {
 
 CurrentWeather.propTypes = {
   info: PropTypes.object,
-  forecast: PropTypes.object,
+  forecast: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 export default CurrentWeather;

@@ -99,7 +99,7 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
 
 Forecast.propTypes = {
   info: PropTypes.object,
-  forecast: PropTypes.array,
+  forecast: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   daysOfWeek: PropTypes.array,
   metric: PropTypes.string,
 };
