@@ -5,7 +5,7 @@
 /* BACKGROUND */
 body {
   text-align: center;
-  background: url("/public/img/background/sky.png") no-repeat center/cover;
+  background: url('/public/img/background/sky.png') no-repeat center/cover;
   background-size: 120%; /* Spread out clouds */
   -webkit-animation: backgroundRoll 50s ease-out infinite;
   animation: backgroundRoll 50s ease-out infinite;
@@ -54,15 +54,15 @@ body,
   outline-color: #fff;
   outline-style: double;
 }
-.Search input[type="search"] {
+.Search input[type='search'] {
   background: url(/public/img/assets/search.svg) no-repeat;
   background-position: 2% 50%;
 }
 
-.Search input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+.Search input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
@@ -123,7 +123,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .DisplayTemperature #temperature {
-  font-family: "Coda";
+  font-family: 'Coda';
   font-size: 4rem;
   font-weight: 400;
 }
@@ -135,7 +135,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /* City name, date and weather details */
 .CurrentCity #current-city {
-  font-family: "Coda";
+  font-family: 'Coda';
   font-size: 4rem;
 }
 
@@ -152,7 +152,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .WeatherDetails .details,
 .bottom-section,
 #celsius-faiconhrenheit {
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
 }
 
@@ -173,7 +173,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .forecast-text > .DisplayTemperature #temperature {
   font-size: 1.5rem;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 /* Last updated */
 .LastUpdated.date-time {
@@ -240,15 +240,11 @@ footer > a:hover {
     font-size: 1.2rem;
   }
 
-  .fa-location-dot {
-    font-size: 0.8rem;
+  .Location .fa-location-dot {
+    font-size: 1.3rem;
+    position: relative;
+    right: 20%;
   }
-
-  #geo-button {
-    margin-bottom: 0.2rem;
-    right: 10%;
-  }
-
   .container {
     width: 80%;
   }
@@ -270,7 +266,8 @@ footer > a:hover {
     font-size: 1.2rem;
   }
   .forecast-text {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    font-weight: 200;
   }
   body {
     background-size: 450%;

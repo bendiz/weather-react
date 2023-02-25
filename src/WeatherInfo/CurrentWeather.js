@@ -1,8 +1,8 @@
-import { React, useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import CurrentCity from "./CurrentCity";
-import CurrentTime from "./CurrentTime";
-import WeatherDetails from "./WeatherDetails";
+import { React, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import CurrentCity from './CurrentCity';
+import CurrentTime from './CurrentTime';
+import WeatherDetails from './WeatherDetails';
 
 function CurrentWeather({ info, forecast }) {
   /**
@@ -43,16 +43,14 @@ function CurrentWeather({ info, forecast }) {
         <img src={url} alt={info.description} className="weather-icon" />
         <div className="DisplayTemperature temperature-container">
           <link className="current-temp" />
-          <h2 id="temperature">
-            {temperature !== undefined ? Math.round(temperature) : ""}
-          </h2>
+          <h2 id="temperature">{Math.round(temperature)}</h2>
           <a
             href="#"
             id="celsius-fahrenheit"
             onClick={handleClick}
             title="convert between °F|°C"
           >
-            {temperature !== undefined ? unit : ""}
+            {unit}
           </a>
         </div>
         <WeatherDetails wind={info.wind} humidity={info.humidity} />

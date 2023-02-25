@@ -1,5 +1,7 @@
-import { React, useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { React } from 'react';
+import PropTypes from 'prop-types';
+import { faDroplet, faWind } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function WeatherDetails({ wind, humidity }) {
   /**
@@ -10,27 +12,16 @@ function WeatherDetails({ wind, humidity }) {
    * @returns {JSX.Element} - Returns the JSX representation.
    */
 
-  const [windReport, setWindReport] = useState(null);
-  const [humidityReport, setHumidityReport] = useState(null);
-
-  function setReports(state) {
-    if (state) {
-      setWindReport(`\u{1F4A8} ${Math.round(wind)}m/s`);
-      setHumidityReport(`\u{1F4A7} ${Math.round(humidity)}%`);
-    } else {
-      setWindReport(``);
-      setHumidityReport(``);
-    }
-  }
-
-  useEffect(() => {
-    wind || humidity ? setReports(true) : setReports(false);
-  }, [wind, humidity]);
-
   return (
     <div className="WeatherDetails details">
-      <span id="wind-speed">{windReport}</span>
-      <span id="humidity">{humidityReport}</span>
+      <span id="wind-speed">
+        <FontAwesomeIcon icon={faWind} />
+        &nbsp;{Math.round(wind)}m/s
+      </span>
+      <span id="humidity">
+        <FontAwesomeIcon icon={faDroplet} />
+        &nbsp;{Math.round(humidity)}%
+      </span>
     </div>
   );
 }
