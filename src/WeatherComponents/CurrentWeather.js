@@ -42,8 +42,12 @@ function CurrentWeather({ info, forecast }) {
     return (
       <div className="CurrentWeather">
         <div className="current-weather-section">
-          <img src={url} alt={info.description} className="weather-icon" />
-          <div className="DisplayTemperature temperature-container">
+          <img
+            src={url}
+            alt={info.description}
+            className="weather-icon animate__bounceIn animate__delay-2s"
+          />
+          <div className="DisplayTemperature temperature-container animate__bounceIn animate__delay-2s">
             <link className="current-temp" />
             <h2 id="temperature">{Math.round(temperature)}</h2>
             <a

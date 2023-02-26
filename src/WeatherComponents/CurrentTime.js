@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Forecast from "./Forecast";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Forecast from './Forecast';
 
 function CurrentTime({ info, forecast, metric }) {
   /**
@@ -11,13 +11,13 @@ function CurrentTime({ info, forecast, metric }) {
    */
 
   const daysOfWeek = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
   ];
 
   if (info.date !== undefined) {
@@ -34,21 +34,21 @@ function CurrentTime({ info, forecast, metric }) {
        */
       if (hours < 10) {
         hours = `0${hours}`;
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}AM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}AM`;
       } else if (hours >= 10 && hours < 12) {
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}AM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}AM`;
       } else if (hours === 12) {
         hours = hours = `0${hours}`;
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}PM`;
       } else if (hours > 12 && hours < 22) {
         hours = hours = `0${hours - 12}`;
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}PM`;
       } else if (hours >= 22 && hours < 24) {
         hours = hours = `${hours - 12}`;
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}PM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}PM`;
       } else if (hours === 24) {
         hours = `${hours - 12}`;
-        minutes = `${minutes < 10 ? prefix : ""}${minutes}AM`;
+        minutes = `${minutes < 10 ? prefix : ''}${minutes}AM`;
       }
     }
     time();

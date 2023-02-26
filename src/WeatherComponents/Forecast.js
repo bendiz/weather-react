@@ -1,5 +1,6 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
+import 'animate.css';
 
 function Forecast({ info, forecast, daysOfWeek, metric }) {
   const list = [];
@@ -23,7 +24,7 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
     forecastElements = list.map((n) => {
       return (
         <div className="weather-forecast-one" key={n}>
-          <p className="forecast-text">
+          <p className="forecast-text animate__bounceInLeft animate__delay-5s">
             {metric.includes('C')
               ? Math.round(forecast[list[n]].temperature.day)
               : Math.round(forecast[list[n]].temperature.day * 1.8 + 32)}{' '}
@@ -32,9 +33,11 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
           <img
             src={forecast[list[n]].condition.icon_url}
             alt={info.description}
-            className="weather-forecast-icon"
+            className="weather-forecast-icon animate__bounceIn animate__delay-5s"
           />
-          <p className="forecast-text">{daysOfWeek[list[n]].slice(0, 3)}</p>
+          <p className="forecast-text animate__bounceInLeft">
+            {daysOfWeek[list[n]].slice(0, 3)}
+          </p>
         </div>
       );
     });
