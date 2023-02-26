@@ -10,7 +10,7 @@ function CurrentCity({ city }) {
    */
 
   return (
-    <div className="CurrentCity city-section animate__bounceIn animate__delay-8s">
+    <div className="CurrentCity city-section animate__bounceIn animate__delay-3s">
       <h1 className="current-city mb-0" id="current-city">
         {city}
       </h1>
