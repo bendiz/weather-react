@@ -1,12 +1,12 @@
-import { React, useState } from "react";
-import axios from "axios";
-import BeatLoader from "react-spinners/BeatLoader";
-import CurrentWeather from "../WeatherInfo/CurrentWeather";
+import { React, useState } from 'react';
+import axios from 'axios';
+import BeatLoader from 'react-spinners/BeatLoader';
+import CurrentWeather from '../WeatherComponents/CurrentWeather';
 
 function Search() {
-  const apiKey = "ba1505034543c95143f951obc63t6cd4";
-  const units = "metric";
-  const [city, setCity] = useState("");
+  const apiKey = 'ba1505034543c95143f951obc63t6cd4';
+  const units = 'metric';
+  const [city, setCity] = useState('');
   const [weatherMessage, setWeatherMessage] = useState({});
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
@@ -20,20 +20,20 @@ function Search() {
   };
   // Sets default city when user opens the weather app
   if (!queried && weatherMessage.lat === undefined) {
-    let apiUrl = "";
+    let apiUrl = '';
     apiUrl = `https://api.shecodes.io/weather/v1/current?query=London&key=${apiKey}&units=${units}`;
     setQueried(true);
     axios.get(apiUrl).then(handleResponse).catch(handleError);
   }
 
   function handleApiRequest(latitude, longitude) {
-    let apiUrl = "";
+    let apiUrl = '';
 
     if (city && city.length > 0) {
       apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
       axios.get(apiUrl).then(handleResponse).catch(handleError);
       // Allows the user to make a 2nd query with location request when search field is not empty
-      setCity("");
+      setCity('');
     } else if (latitude && longitude && !city) {
       apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
       axios.get(apiUrl).then(handleResponse).catch(handleError);
@@ -134,7 +134,7 @@ function Search() {
           data-testid="loader"
         />
       ) : (
-        ""
+        ''
       )}
       <CurrentWeather info={weatherMessage} forecast={forecast} />
     </div>

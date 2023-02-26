@@ -2,7 +2,8 @@ import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CurrentCity from './CurrentCity';
 import CurrentTime from './CurrentTime';
-import WeatherDetails from './WeatherDetails';
+import { faDroplet, faWind } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function CurrentWeather({ info, forecast }) {
   /**
@@ -37,28 +38,39 @@ function CurrentWeather({ info, forecast }) {
     temperatureConversion();
   }
 
-  return (
-    <div className="CurrentWeather">
-      <div className="current-weather-section">
-        <img src={url} alt={info.description} className="weather-icon" />
-        <div className="DisplayTemperature temperature-container">
-          <link className="current-temp" />
-          <h2 id="temperature">{Math.round(temperature)}</h2>
-          <a
-            href="#"
-            id="celsius-fahrenheit"
-            onClick={handleClick}
-            title="convert between °F|°C"
-          >
-            {unit}
-          </a>
+  if (temperature !== undefined) {
+    return (
+      <div className="CurrentWeather">
+        <div className="current-weather-section">
+          <img src={url} alt={info.description} className="weather-icon" />
+          <div className="DisplayTemperature temperature-container">
+            <link className="current-temp" />
+            <h2 id="temperature">{Math.round(temperature)}</h2>
+            <a
+              href="#"
+              id="celsius-fahrenheit"
+              onClick={handleClick}
+              title="convert between °F|°C"
+            >
+              {unit}
+            </a>
+          </div>
+          <div className="WeatherDetails details">
+            <span id="wind-speed">
+              <FontAwesomeIcon icon={faWind} />
+              &nbsp;{Math.round(info.wind)}m/s
+            </span>
+            <span id="humidity">
+              <FontAwesomeIcon icon={faDroplet} />
+              &nbsp;{Math.round(info.humidity)}%
+            </span>
+          </div>
         </div>
-        <WeatherDetails wind={info.wind} humidity={info.humidity} />
+        <CurrentCity city={info.city} />
+        <CurrentTime info={info} forecast={forecast} metric={unit} />
       </div>
-      <CurrentCity city={info.city} />
-      <CurrentTime info={info} forecast={forecast} metric={unit} />
-    </div>
-  );
+    );
+  }
 }
 
 CurrentWeather.propTypes = {

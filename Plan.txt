@@ -3,6 +3,3 @@
     - Dark icons
     - Grey card
     - Dark Background
-
-6. User input
-    - Stop the API from making 2 calls
