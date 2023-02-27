@@ -19,10 +19,8 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
       }
     }
   }
-
-  if (forecast !== undefined) {
+  if (forecast[0] !== undefined) {
     forecastElements = list.map((n) => {
-      console.log(list[n - 1]);
       return (
         <div className="weather-forecast-one" key={n}>
           <p className="forecast-text">
@@ -33,7 +31,7 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
           </p>
           <img
             src={forecast[list[n - 1]].condition.icon_url}
-            alt={info.description}
+            alt={forecast[list[n - 1]].condition.description}
             className="weather-forecast-icon animate__bounceIn animate__delay-5s"
           />
           <p className="forecast-text animate__bounceInLeft">
