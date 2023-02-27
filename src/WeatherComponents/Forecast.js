@@ -20,30 +20,31 @@ function Forecast({ info, forecast, daysOfWeek, metric }) {
     }
   }
 
-  if (forecast[0] !== undefined) {
+  if (forecast !== undefined) {
     forecastElements = list.map((n) => {
+      console.log(list[n - 1]);
       return (
         <div className="weather-forecast-one" key={n}>
-          <p className="forecast-text animate__bounceInLeft animate__delay-5s">
+          <p className="forecast-text">
             {metric.includes('C')
-              ? Math.round(forecast[list[n]].temperature.day)
-              : Math.round(forecast[list[n]].temperature.day * 1.8 + 32)}{' '}
+              ? Math.round(forecast[list[n - 1]].temperature.day)
+              : Math.round(forecast[list[n - 1]].temperature.day * 1.8 + 32)}
             {metric}
           </p>
           <img
-            src={forecast[list[n]].condition.icon_url}
+            src={forecast[list[n - 1]].condition.icon_url}
             alt={info.description}
             className="weather-forecast-icon animate__bounceIn animate__delay-5s"
           />
           <p className="forecast-text animate__bounceInLeft">
-            {daysOfWeek[list[n]].slice(0, 3)}
+            {daysOfWeek[list[n - 1]].slice(0, 3)}
           </p>
         </div>
       );
     });
   }
 
-  if (forecast[0] !== undefined) {
+  if (forecast !== undefined) {
     return <div className="Forecast bottom-section">{forecastElements}</div>;
   }
 }
