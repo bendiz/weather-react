@@ -1,5 +1,6 @@
 <h2> Weather App </h2>
-- This project was made to practice React. 
+- This project was made to practice React.
+<br/>
 - Designed, and coded by me. Icons from SheCodes.
 
 
