@@ -1,4 +1,6 @@
 <h2> Weather App </h2>
+Live: https://bendiz.no/
+<br/>
 - This project was made to practice React.
 <br/>
 - Designed, and coded by me. Icons from SheCodes.
